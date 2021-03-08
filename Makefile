@@ -3,5 +3,5 @@
 gitlab:
 	git push
 
-neocities-supporter: build
+neocities-supporter:
 	rclone sync public bruhltd: -P
