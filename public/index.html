@@ -26,6 +26,12 @@
 				background: #000000;
 			}
 			
+			@media print {
+				* {
+					display: none;
+				}
+			}
+			
 			header, section, footer {
 				padding: 1em;
 			}
@@ -114,7 +120,7 @@
 		</style>
 	</head>
 	
-	<body>
+	<body aria-hidden="true">
 		<header>
 			<h1>
 				<img src="icon.png" class="logo">
@@ -170,6 +176,47 @@
 			}
 			for (let i = 0; i < painLevel; i++) {
 				document.write("</div>");
+			}
+		</script>
+		
+		<script>
+			let alreadyDead = false;
+			
+			function die(message) {
+				if (!alreadyDead) {
+					document.body.remove();
+					
+					alert(message);
+					
+					alreadyDead = true;
+				}
+			}
+			
+			for (const inconvenience of [
+				[
+					"(hover: none) and (orientation: landscape)",
+					"Sorry, landscape orientation is not supported"
+				],
+				[
+					"(hover: hover) and (orientation: portrait)",
+					"Sorry, portrait orientation is not supported"
+				],
+				[
+					"(hover: hover) and (max-width: 800px)",
+					"Sorry, low resolution devices are not supported"
+				]
+			]) {
+				if (window.matchMedia(inconvenience[0]).matches) {
+					die(inconvenience[1]);
+				}
+			}
+			
+			window.addEventListener("resize", () => {
+				die("Sorry, changing the window size and rotating the screen are not supported");
+			});
+			
+			if (/(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent)) {
+				die("Sorry, Apple devices are not supported");
 			}
 		</script>
 		
