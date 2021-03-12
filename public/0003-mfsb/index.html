@@ -40,6 +40,10 @@
 				max-width: 100%;
 			}
 			
+			area {
+				cursor: default;
+			}
+			
 			.privacy-policy {
 				font-size: 8pt;
 				color: #FFFFFF;
@@ -53,7 +57,11 @@
 	
 	<body>
 		<div class="page-wrapper">
-			<p><img src="painting.jpg" alt="Flower pot painting"></p>
+			<map name="painting">
+				<area shape="rect" coords="51,312,102,357" href="/0004-www/">
+			</map>
+			
+			<p><img usemap="#painting" src="painting.jpg" alt="Flower pot painting"></p>
 			
 			<iframe
 				width="320"
