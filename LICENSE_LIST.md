@@ -17,21 +17,22 @@
 
 ## SIL Open Font License (`LICENSE_OFL`)
 
-* `themes/1997/static/fonts/comic-neue.woff2` -
+* `public/fonts/comic-neue.woff2` -
   [source](https://github.com/crozynski/comicneue/blob/380f5e82c13d85c56fd0a78df58d06343cc1393b/Fonts/WebFonts/woff2/ComicNeue/ComicNeue-Regular.woff2)
   > Copyright 2014 The Comic Neue Project Authors
   > (https://github.com/crozynski/comicneue)
-* `themes/1997/static/fonts/courier-prime.woff2` -
+* `public/fonts/courier-prime.woff2` -
   [source](https://github.com/quoteunquoteapps/CourierPrime/blob/7fd585a2dd4c1612c79b3308e300923d1c13df93/fonts/ttf/CourierPrime-Regular.ttf)
   > Copyright 2015 The Courier Prime Project Authors
   > (https://github.com/quoteunquoteapps/CourierPrime).
-* `themes/1997/static/fonts/source-{code,sans,serif}-pro.woff2` -
+* `public/fonts/source-{code,sans,serif}-pro.woff2` -
   [source](https://github.com/adobe-fonts/source-code-pro/blob/235b72fc43a46cacf36e7c9b45d8d4fc0d121099/WOFF2/OTF/SourceCodePro-Regular.otf.woff2),
   [source](https://github.com/adobe-fonts/source-sans-pro/blob/4bdf42c690a214a0f69410d71a6b889c5c4a695f/WOFF2/OTF/SourceSansPro-Regular.otf.woff2),
   [source](https://github.com/adobe-fonts/source-serif-pro/blob/c811345609ee81ddb83ac707c15f7defd6269963/WOFF2/OTF/SourceSerifPro-Regular.otf.woff2)
   > Copyright 2010-2019 Adobe (http://www.adobe.com/), with Reserved
   > Font Name 'Source'. All Rights Reserved. Source is a trademark of
   > Adobe in the United States and/or other countries.
+* `public/images/cursors/`
 
 ## Creative Commons Attribution 4.0 International Public License (`LICENSE`)
 
