@@ -2,6 +2,7 @@ const container = document.createElement("div");
 
 container.innerHTML = "© 2021 Bruh, Ltd. ";
 
+container.style.all = "initial";
 container.style.position = "fixed";
 container.style.bottom = "0px";
 container.style.right = "0px";
