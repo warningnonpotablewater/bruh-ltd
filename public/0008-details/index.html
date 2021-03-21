@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+
+<html lang="en-ca">
+	<head>
+		<title>Details</title>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<style>
+			body {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				min-height: 100vh;
+				padding: 0;
+				margin: 0;
+				font-size: 14pt;
+				font-family: sans-serif;
+				background: #FFFFFF;
+			}
+			
+			.page-wrapper {
+				flex-grow: 1;
+				min-width: 0;
+				max-width: 20em;
+				padding: 1em 2em;
+			}
+			
+			details {
+				padding: 0.5em;
+				border: solid 1px #BBBBBB;
+				border-radius: 0.5em;
+			}
+			
+			summary {
+				cursor: pointer;
+			}
+			details[open] summary {
+				padding-bottom: 0.5em;
+				margin-bottom: 0.5em;
+				border-bottom: solid 1px #BBBBBB;
+			}
+			
+			details > *:nth-child(2) {
+				margin-top: 0;
+			}
+			details > *:last-child {
+				margin-bottom: 0;
+			}
+			
+			.secret-link {
+				cursor: inherit;
+				text-decoration: inherit;
+				color: inherit;
+			}
+		</style>
+		
+		<script src="/scripts/licensing.js" type="module"></script>
+	</head>
+	
+	<body>
+		<div class="page-wrapper">
+			<details>
+				<summary>Open</summary>
+				
+				<p>Close<a href="/9999-nine-nine-nine-nine/" class="secret-link">.</a></p>
+			</details>
+		</div>
+	</body>
+</html>
