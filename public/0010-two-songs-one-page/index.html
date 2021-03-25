@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+
+<html lang="en-ca">
+	<head>
+		<title>Two songs, one page</title>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<style>
+			:root {
+				--background-color: #000000;
+				--foreground-color: #FFFFFF;
+				--accent-color: #FBAAC0;
+			}
+			
+			body {
+				margin: 0;
+				font-family: sans-serif;
+			}
+			
+			.players {
+				display: flex;
+				width: 100vw;
+				height: 100vh;
+			}
+			@media (orientation: portrait) {
+				.players {
+					flex-direction: column;
+				}
+			}
+			
+			.players > * {
+				flex-basis: 50%;
+				flex-shrink: 0;
+				border: none;
+			}
+			
+			#player1 {
+				background: #0F0000;
+			}
+			#player2 {
+				background: #00000F;
+			}
+			
+			#consent, #consent button {
+				font-size: 20pt;
+			}
+			#consent {
+				position: fixed;
+				top: 0;
+				bottom: 0;
+				box-sizing: border-box;
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				align-items: center;
+				min-width: 100%;
+				min-height: 100vh;
+				padding: 1em;
+				color: var(--foreground-color);
+				background: var(--background-color);
+			}
+			
+			#consent button {
+				padding: 8px 16px;
+				border: solid 2px var(--foreground-color);
+				border-radius: 8px;
+				color: var(--foreground-color);
+				background: transparent;
+				transition: opacity 0.1s, box-shadow 0.1s;
+			}
+			#consent button:hover {
+				opacity: 0.5;
+			}
+			#consent button:focus {
+				box-shadow: 0 0 0 4px var(--accent-color);
+			}
+			
+			#consent a {
+				color: var(--accent-color);
+				text-decoration: none;
+				transition: opacity 0.1s;
+			}
+			#consent a:hover {
+				opacity: 0.5;
+			}
+			
+			#consent small {
+				font-size: 0.5em;
+			}
+			
+			.secret-link {
+				cursor: inherit !important;
+				text-decoration: inherit !important;
+				color: inherit !important;
+				opacity: 1 !important;
+			}
+		</style>
+		
+		<script src="/scripts/licensing.js" type="module"></script>
+	</head>
+	
+	<body>
+		<div class="players">
+			<iframe id="player1" allow="autoplay"></iframe>
+			<iframe id="player2" allow="autoplay"></iframe>
+		</div>
+		
+		<div id="consent">
+			<p>Please press this button:</p>
+			
+			<button onclick="suffer()">I am willing to have my ears raped</button>
+			
+			<p><small>By <a href="/9999-nine-nine-nine-nine/" class="secret-link">clicking</a>, you also agree to YouTube's <a href="https://policies.google.com/privacy">privacy policy</a> and <a href="https://www.youtube.com/t/terms">terms of service</a>.</small></p>
+		</div>
+		
+		<script>
+			const videoIds = [
+				"o8nTCbcJ6kk",
+				"VSvdKMGiW58",
+				"-mLpe7KUg9U",
+				"PHvWumlLeLQ",
+				"pAaXzHJhA18",
+				"UJCPhl-5Ysg",
+				"ujGVZ1QKlv0",
+				"vM1bljwUjFA",
+				"xCP7bCJxxm8",
+				"vzjUs5yR68o",
+				"eaJHysi5tYg",
+				"QcyCz0Ia0kE",
+				"0FCvzsVlXpQ",
+				"MR3uP7IYz44",
+				"uMeePhFHk_A",
+				"HX-DxFjXTPw",
+				"Z_bMV1KqCws",
+				"Kr4EQDVETuA",
+				"kyzIQKuSqBs",
+				"NEO3FseuIv4",
+				"-61YZirBqWs",
+				"PbpIyn70t8c",
+				"qIsr88NvLW0",
+				"bkMuFuakNDo",
+				"LE9ag97xcxw",
+				"eRWCh3EV5S8",
+				"x7ssakKjfSY",
+				"vDdmOlABSfw",
+				"KX0eddzGWIY",
+				"R-QZ1xOa05k",
+				"EWMPVn1kgIQ",
+				"4Hvvltt7d-U",
+				"qRXalmUsGyc",
+				"u887_GoiZ80",
+				"EBeusFaN_7c",
+				"JZNy6eHw3FA",
+				"uNCGM7FJ8wQ",
+				"KI9f2DRyOGg",
+				"o0tky2O8NlY",
+				"n3Q_GTBrjHI",
+				"t3IyUATcAbE",
+				"V-2irUUpLZA",
+				"uE0YFvInlSY",
+				"Jb6gcoR266U",
+				"cmXxhyq6RKQ",
+				"-rrrof1TJc4",
+				"qBdv_tqVqkw",
+				"yNGUW8uZ1oo",
+				"06okSVu7Fig",
+				"EnI6siiXE4M",
+				"QbVQGE_evC0",
+				"1TLFnokO1Oo",
+				"EnNgASBdCeo",
+				"rJAvgFLUmUc",
+				"AYDW_Cwi-wI",
+				"LS86CPaShI4",
+				"hGszoS9txzg",
+				"-hH0j0Q4WTU",
+				"0skigTyA4NE",
+				"BOmTH9m4Lk8",
+				"LELQLEDnDvg",
+				"hH9M-m3WD0g",
+				"8v7-_d8DbRM",
+				"vP709vKwkD0",
+				"3XvANBiNg4U",
+				"C_zL0EraakQ",
+				"k-Xv0sKBMA8",
+				"wPH1IuMtFGc",
+				"PhD58dP9kq8",
+				"Q5C9oeKxJzo",
+				"GLUCCewe_4c",
+				"ER_WB_vgfbk",
+				"jwZ2hOlnfYE",
+				"lKFnjYhKIvg",
+				"0MQ4G821kcw",
+				"wwJ6HuRdDA4",
+				"AZF-lfMziow",
+				"qrvF6Kai2Y0",
+				"NDN5PD00CpQ",
+				"LnTE8Lgjt18",
+				"uxyM7vhU0uU",
+				"iZcOYmMyG-E",
+				"G8dsvclf3Tk",
+				"u0BG9N331tQ",
+				"tVdr_JWmnsA",
+				"eRhg7qPLeN8",
+				"zmhCkcZ_NA0",
+				"j-RsJVVsxXM",
+				"iusob72gPno",
+				"hI5Wv5IRGHU",
+				"epIeTwiVEww",
+				"xrZeY6CAvMY",
+				"URDuc5-ml_c",
+				"wuJIqmha2Hk",
+				"CaTnVzdx9_M",
+				"nh2Jyswh_Yg",
+				"tYvFa2ARD24",
+				"Ys2lzTa6a8k",
+				"4D7u5KF7SP8",
+				"RCD344yxFAI"
+			];
+			
+			function suffer() {
+				function randomVideoId() {
+					return videoIds[Math.floor(Math.random() * videoIds.length)];
+				}
+				
+				function youtubeUrl(videoId) {
+					return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+				}
+				
+				document.querySelector("#consent").remove();
+				
+				let videoId1 = null, videoId2 = null;
+				
+				do {
+					videoId1 = randomVideoId();
+					videoId2 = randomVideoId();
+				} while (videoId1 == videoId2);
+				
+				document.querySelector("#player1").src = youtubeUrl(videoId1);
+				document.querySelector("#player2").src = youtubeUrl(videoId2);
+			}
+		</script>
+	</body>
+</html>
