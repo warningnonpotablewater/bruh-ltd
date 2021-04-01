@@ -1,5 +1,9 @@
 @charset "utf-8";
 
+*, *::before, *::after {
+	box-sizing: border-box;
+}
+
 .secret-link {
 	cursor: inherit !important;
 	text-decoration: inherit !important;
