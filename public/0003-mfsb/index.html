@@ -9,6 +9,8 @@
 		
 		<link href="painting.jpg" rel="icon">
 		
+		<link href="/styles/common.css" rel="stylesheet">
+		
 		<style>
 			body {
 				display: flex;
@@ -40,10 +42,6 @@
 				max-width: 100%;
 			}
 			
-			area {
-				cursor: default;
-			}
-			
 			.privacy-policy {
 				font-size: 8pt;
 				color: #FFFFFF;
@@ -58,7 +56,13 @@
 	<body>
 		<div class="page-wrapper">
 			<map name="painting">
-				<area shape="rect" coords="51,312,102,357" href="/0004-www/">
+				<area
+					shape="rect"
+					coords="51,312,102,357"
+					
+					href="/0004-www/"
+					class="secret-link"
+				>
 			</map>
 			
 			<p><img usemap="#painting" src="painting.jpg" alt="Flower pot painting"></p>

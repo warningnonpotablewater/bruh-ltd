@@ -1,0 +1,8 @@
+@charset "utf-8";
+
+.secret-link {
+	cursor: inherit !important;
+	text-decoration: inherit !important;
+	color: inherit !important;
+	opacity: 1 !important;
+}
