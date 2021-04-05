@@ -7,6 +7,7 @@
 * `public/0003-mfsb/painting.jpg` -
   [source](https://commons.wikimedia.org/wiki/File:Stranover,_Tobias_-_Still-Life_with_Flowers_-_Google_Art_Project.jpg)
   [source](https://publicdomainpictures.net/en/view-image.php?image=270264&picture=framed-vintage-painting)
+* `public/images/cursors/`
 
 ## Creative Commons Attribution-ShareAlike 2.0 Generic Public License (`LICENSE_CC_BY_SA_2.html`)
 
@@ -32,7 +33,6 @@
   > Copyright 2010-2019 Adobe (http://www.adobe.com/), with Reserved
   > Font Name 'Source'. All Rights Reserved. Source is a trademark of
   > Adobe in the United States and/or other countries.
-* `public/images/cursors/`
 
 ## Creative Commons Attribution 4.0 International Public License (`LICENSE`)
 
