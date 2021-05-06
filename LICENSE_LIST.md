@@ -7,6 +7,8 @@
 * `public/0003-mfsb/painting.jpg` -
   [source](https://commons.wikimedia.org/wiki/File:Stranover,_Tobias_-_Still-Life_with_Flowers_-_Google_Art_Project.jpg)
   [source](https://publicdomainpictures.net/en/view-image.php?image=270264&picture=framed-vintage-painting)
+* `public/0012-framebuffer/test.png` -
+  [source](https://commons.wikimedia.org/wiki/File:Chinese_HDTV_test_card.png)
 * `public/images/cursors/`
 
 ## Creative Commons Attribution-ShareAlike 2.0 Generic Public License (`LICENSE_CC_BY_SA_2.html`)
