@@ -50,5 +50,5 @@
 * `public/0004-www/stars.png` -
   [source](https://commons.wikimedia.org/wiki/File:Phoenix_dwarf_galaxy.jpg)
   > Copyright 2011 ESA/Hubble
-* All other files
+* All other files except embedded ones
   > Copyright 2021 Kirby Kevinson
