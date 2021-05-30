@@ -99,14 +99,14 @@
 	
 	<body>
 		<div class="players">
-			<iframe id="player1" allow="autoplay"></iframe>
-			<iframe id="player2" allow="autoplay"></iframe>
+			<iframe id="player1"></iframe>
+			<iframe id="player2"></iframe>
 		</div>
 		
 		<div id="consent">
 			<p>Please press this button:</p>
 			
-			<button onclick="suffer()">I am willing to have my ears raped</button>
+			<button onclick="showSongs()">Show me the songs</button>
 			
 			<p><small>By <a href="/0011-2018/" class="secret-link">clicking</a>, you also agree to YouTube's <a href="https://policies.google.com/privacy">privacy policy</a> and <a href="https://www.youtube.com/t/terms">terms of service</a>.</small></p>
 		</div>
@@ -215,13 +215,13 @@
 				"RCD344yxFAI"
 			];
 			
-			function suffer() {
+			function showSongs() {
 				function randomVideoId() {
 					return videoIds[Math.floor(Math.random() * videoIds.length)];
 				}
 				
 				function youtubeUrl(videoId) {
-					return `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+					return `https://www.youtube.com/embed/${videoId}`;
 				}
 				
 				document.querySelector("#consent").remove();
