@@ -10,4 +10,4 @@ neocities-supporter:
 	rclone sync public bruhltd: -P
 
 archive:
-	zip -r $$(date +"%F")-web.bruh.ltd.org.zip *
+	zip -r $$(date +"%F")-web.bruh.ltd.zip *
