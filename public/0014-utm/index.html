@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html lang="en-ca">
+	<head>
+		<title>UTM URL builder</title>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link href="/styles/common.css" rel="stylesheet">
+		
+		<style>
+			body {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				min-height: 100vh;
+				padding: 0;
+				margin: 0;
+				font-size: 14pt;
+				font-family: "Times New Roman", serif;
+			}
+			
+			.page-wrapper {
+				flex-grow: 1;
+				min-width: 0;
+				max-width: 40em;
+				margin: 1em;
+			}
+			
+			.page-wrapper > *:first-child {
+				margin-top: 0;
+			}
+			.page-wrapper > *:last-child {
+				margin-bottom: 0;
+			}
+			
+			p {
+				margin-bottom: 2.5em;
+			}
+			
+			label {
+				display: flex;
+				flex-wrap: wrap;
+			}
+			label:not(:last-child) {
+				margin-bottom: 1em;
+			}
+			
+			.label {
+				min-width: 8em;
+			}
+			
+			input[type="text"] {
+				flex-grow: 1;
+				font-family: inherit;
+				font-size: inherit;
+			}
+			
+			.secret-link-container {
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				cursor: default;
+				opacity: 0;
+			}
+		</style>
+		
+		<script src="/scripts/licensing.js" type="module"></script>
+		
+		<script type="module">
+			const
+				urlField = document.querySelector("#url"),
+				utmFields = document.querySelectorAll(".utm");
+			
+			function getUrl() {
+				try {
+					return new URL(urlField.value);
+				} catch (error) {
+					alert("The URL is not valid");
+					
+					return null;
+				}
+			}
+			
+			function read() {
+				const url = getUrl();
+				
+				if (!url) {
+					return;
+				}
+				
+				const searchParams = url.searchParams;
+				
+				for (const field of utmFields) {
+					const fieldName = field.className + "_" + field.id;
+					
+					field.value = searchParams.get(fieldName);
+				}
+			}
+			function write(field) {
+				const url = getUrl();
+				
+				if (!url) {
+					return;
+				}
+				
+				const
+					searchParams = url.searchParams,
+					fieldName = field.className + "_" + field.id;
+				
+				searchParams.set(fieldName, field.value);
+				
+				url.search = searchParams.toString();
+				
+				urlField.value = url.href;
+			}
+			
+			url.addEventListener("change", () => {
+				read();
+			});
+			
+			for (const field of utmFields) {
+				field.addEventListener("change", () => {
+					write(field);
+				});
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div class="page-wrapper">
+			<p><label>
+				<span class="label">URL: </span>
+				<input type="text" id="url">
+			</label></p>
+			
+			<p>
+				<label>
+					<span class="label">utm_source:</span>
+					<input type="text" class="utm" id="source">
+				</label>
+				<label>
+					<span class="label">utm_medium:</span>
+					<input type="text" class="utm" id="medium">
+				</label>
+				<label>
+					<span class="label">utm_campaign:</span>
+					<input type="text" class="utm" id="campaign">
+				</label>
+				<label>
+					<span class="label">utm_term:</span>
+					<input type="text" class="utm" id="term">
+				</label>
+				<label>
+					<span class="label">utm_content:</span>
+					<input type="text" class="utm" id="content">
+				</label>
+			</p>
+		</div>
+		
+		<div class="secret-link-container">
+			<a href="/9999-nine-nine-nine-nine/" class="secret-link">secret link</a>
+		</div>
+	</body>
+</html>
