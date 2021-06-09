@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html lang="en-ca">
+	<head>
+		<title>Cow gateway</title>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link href="/styles/common.css" rel="stylesheet">
+		
+		<style>
+			@font-face {
+				src:
+					local("Source Sans Pro"),
+					url("/fonts/source-sans-pro.woff2");
+				font-family: "Source Sans Pro";
+				font-display: swap;
+			}
+			
+			:root {
+				--left-background-color: #F0EDE8;
+				--left-foreground-color: #000000CF;
+				--left-accent-color: #AD1429;
+				
+				--right-background-color: #1E191D;
+				--right-foreground-color: #FFFFFFCF;
+				--right-accent-color: #FBAAC0;
+			}
+			
+			body {
+				display: flex;
+				padding: 0;
+				margin: 0;
+				width: 100vw;
+				height: 100vh;
+				font-family: "Source Sans Pro", sans-serif;
+			}
+			@media (orientation: portrait) {
+				body {
+					flex-direction: column;
+				}
+			}
+			
+			#left, #right {
+				display: flex;
+				flex-basis: 50%;
+				flex-shrink: 0;
+				justify-content: center;
+				align-items: center;
+				font-size: max(15vmin, 5em);
+			}
+			
+			#left {
+				color: var(--left-foreground-color);
+				background: var(--left-background-color);;
+			}
+			#right {
+				color: var(--right-foreground-color);
+				background: var(--right-background-color);;
+			}
+			
+			#left *::selection, .note > .left::selection {
+				color: var(--left-background-color);
+				background: var(--left-foreground-color);
+			}
+			#right *::selection, .note > .right::selection {
+				color: var(--right-background-color);
+				background: var(--right-foreground-color);
+			}
+			
+			#left a, #right a {
+				text-decoration: none;
+				transition: opacity 0.1s;
+			}
+			
+			#left a {
+				color: var(--left-accent-color);
+			}
+			#right a {
+				color: var(--right-accent-color);
+			}
+			
+			#left a:hover, #right a:hover {
+				opacity: 0.5;
+			}
+			
+			.note {
+				position: absolute;
+				bottom: 16px;
+				right: 6px;
+				width: 100%;
+				text-align: center;
+				font-size: 16pt;
+			}
+			
+			.note > .left {
+				color: var(--left-foreground-color);
+			}
+			.note > .right {
+				color: var(--right-foreground-color);
+			}
+			
+			@media (orientation: portrait) {
+				.note {
+					bottom: 50vh;
+					right: 0;
+					display: flex;
+					flex-direction: column;
+					transform: translateY(50%);
+				}
+			}
+		</style>
+		
+		<script src="/scripts/licensing.js" type="module"></script>
+		
+		<script type="module">
+			let links = [
+				document.querySelector("#left a"),
+				document.querySelector("#right a")
+			];
+			
+			if (Math.random() < 0.5) {
+				links = links.reverse();
+			}
+			
+			links[0].href = "/0014-utm/";
+			links[1].href = "/9999-nine-nine-nine-nine/";
+		</script>
+	</head>
+	
+	<body>
+		<div id="left">
+			<a href="#">left</a>
+		</div>
+		<div id="right">
+			<a href="#">right</a>
+		</div>
+		
+		<div class="note">
+			<span class="left">The illusion o</span><span class="right">f free choice</span>
+		</div>
+	</body>
+</html>
