@@ -133,7 +133,7 @@
 			
 			const mediaQuery = window.matchMedia("(orientation: portrait)");
 			
-			mediaQuery.addEventListener("change", () => {
+			function onOrientationChange() {
 				if (!mediaQuery.matches) {
 					left.innerText = "left";
 					right.innerText = "right";
@@ -147,9 +147,15 @@
 					leftNote.innerText = "The illusion of";
 					rightNote.innerText = "free choice";
 				}
-			});
+			}
 			
-			mediaQuery.dispatchEvent(new Event("change"));
+			if (mediaQuery.addEventListener) {
+				mediaQuery.addEventListener("change", onOrientationChange);
+			} else {
+				mediaQuery.addListener(onOrientationChange);
+			}
+			
+			onOrientationChange();
 		</script>
 	</head>
 	
