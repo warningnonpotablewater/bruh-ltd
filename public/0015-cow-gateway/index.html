@@ -115,10 +115,14 @@
 		<script src="/scripts/licensing.js" type="module"></script>
 		
 		<script type="module">
-			let links = [
-				document.querySelector("#left a"),
-				document.querySelector("#right a")
-			];
+			const
+				left = document.querySelector("#left a"),
+				right = document.querySelector("#right a"),
+				
+				leftNote = document.querySelector(".note .left"),
+				rightNote = document.querySelector(".note .right");
+			
+			let links = [left, right];
 			
 			if (Math.random() < 0.5) {
 				links = links.reverse();
@@ -126,19 +130,39 @@
 			
 			links[0].href = "/0014-utm/";
 			links[1].href = "/9999-nine-nine-nine-nine/";
+			
+			const mediaQuery = window.matchMedia("(orientation: portrait)");
+			
+			mediaQuery.addEventListener("change", () => {
+				if (!mediaQuery.matches) {
+					left.innerText = "left";
+					right.innerText = "right";
+					
+					leftNote.innerText = "The illusion o";
+					rightNote.innerText = "f free choice";
+				} else {
+					left.innerText = "top";
+					right.innerText = "down";
+					
+					leftNote.innerText = "The illusion of";
+					rightNote.innerText = "free choice";
+				}
+			});
+			
+			mediaQuery.dispatchEvent(new Event("change"));
 		</script>
 	</head>
 	
 	<body>
 		<div id="left">
-			<a href="#">left</a>
+			<a href="#"></a>
 		</div>
 		<div id="right">
-			<a href="#">right</a>
+			<a href="#"></a>
 		</div>
 		
 		<div class="note">
-			<span class="left">The illusion o</span><span class="right">f free choice</span>
+			<span class="left"></span><span class="right"></span>
 		</div>
 	</body>
 </html>
