@@ -184,15 +184,17 @@
 			let alreadyDead = false;
 			
 			function die(message) {
-				if (!alreadyDead) {
-					document.body.innerHTML = "";
-					
-					alert(message);
-					
-					document.body.innerHTML = "<a href=\"/0001-about/\">Next page</a>";
-					
-					alreadyDead = true;
+				if (alreadyDead) {
+					return;
 				}
+				
+				document.body.innerHTML = "";
+				
+				alert(message);
+				
+				document.body.innerHTML = "<a href=\"/0001-about/\">Next page</a>";
+				
+				alreadyDead = true;
 			}
 			
 			for (const inconvenience of [

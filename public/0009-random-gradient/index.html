@@ -19,6 +19,7 @@
 				padding: 0;
 				margin: 0;
 				overflow: hidden;
+				background: #000000;
 			}
 			
 			.secret-link {
@@ -29,12 +30,8 @@
 		</style>
 		
 		<script src="/scripts/licensing.js" type="module"></script>
-	</head>
-	
-	<body>
-		<a href="/0010-two-songs-one-page/" class="secret-link"></a>
 		
-		<script>
+		<script type="module">
 			function randomColor() {
 				const color = Math.floor(Math.random() * 2 ** 24);
 				
@@ -52,5 +49,9 @@
 			document.querySelector(".secret-link").style.transform =
 				`rotate(${angle + 90}deg)`;
 		</script>
+	</head>
+	
+	<body>
+		<a href="/0010-two-songs-one-page/" class="secret-link"></a>
 	</body>
 </html>

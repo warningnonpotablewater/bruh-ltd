@@ -95,23 +95,8 @@
 		</style>
 		
 		<script src="/scripts/licensing.js" type="module"></script>
-	</head>
-	
-	<body>
-		<div class="players">
-			<iframe id="player1"></iframe>
-			<iframe id="player2"></iframe>
-		</div>
 		
-		<div id="consent">
-			<p>Please press this button:</p>
-			
-			<button onclick="showSongs()">Show me the songs</button>
-			
-			<p><small>By <a href="/0011-2018/" class="secret-link">clicking</a>, you also agree to YouTube's <a href="https://policies.google.com/privacy">privacy policy</a> and <a href="https://www.youtube.com/t/terms">terms of service</a>.</small></p>
-		</div>
-		
-		<script>
+		<script type="module">
 			const videoIds = [
 				"o8nTCbcJ6kk",
 				"VSvdKMGiW58",
@@ -236,6 +221,25 @@
 				document.querySelector("#player1").src = youtubeUrl(videoId1);
 				document.querySelector("#player2").src = youtubeUrl(videoId2);
 			}
+			
+			document.querySelector("#show-songs").addEventListener("click", () => {
+				showSongs();
+			});
 		</script>
+	</head>
+	
+	<body>
+		<div class="players">
+			<iframe id="player1"></iframe>
+			<iframe id="player2"></iframe>
+		</div>
+		
+		<div id="consent">
+			<p>Please press this button:</p>
+			
+			<button id="show-songs">Show me the songs</button>
+			
+			<p><small>By <a href="/0011-2018/" class="secret-link">clicking</a>, you also agree to YouTube's <a href="https://policies.google.com/privacy">privacy policy</a> and <a href="https://www.youtube.com/t/terms">terms of service</a>.</small></p>
+		</div>
 	</body>
 </html>
