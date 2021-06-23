@@ -23,6 +23,13 @@
 	background: var(--consent-background-color);
 }
 
+#consent > *:first-child {
+	margin-top: 0;
+}
+#consent > *:last-child {
+	margin-bottom: 0;
+}
+
 #consent ::selection {
 	color: var(--consent-background-color);
 	background: var(--consent-foreground-color);
