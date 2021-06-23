@@ -1,0 +1,55 @@
+@charset "utf-8";
+
+:root {
+	--consent-background-color: #111111;
+	--consent-foreground-color: #C0C0C0;
+	--consent-accent-color: #FBAAC0;
+}
+
+#consent {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	min-width: 100%;
+	min-height: 100vh;
+	padding: 1em;
+	font-size: 20pt;
+	color: var(--consent-foreground-color);
+	background: var(--consent-background-color);
+}
+
+#consent ::selection {
+	color: var(--consent-background-color);
+	background: var(--consent-foreground-color);
+}
+
+#consent button {
+	padding: 8px 16px;
+	font-size: inherit;
+	border: solid 2px var(--consent-foreground-color);
+	border-radius: 8px;
+	color: var(--consent-foreground-color);
+	background: transparent;
+	transition: color 0.1s, background 0.1s;
+}
+#consent button:hover {
+	color: var(--consent-background-color);
+	background: var(--consent-foreground-color);
+}
+
+#consent a {
+	text-decoration: none;
+	color: var(--consent-accent-color);
+}
+#consent a:hover {
+	text-decoration: underline;
+}
+
+#consent small {
+	font-size: 0.5em;
+}

@@ -8,14 +8,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
 		<link href="/styles/common.css" rel="stylesheet">
+		<link href="/styles/consent.css" rel="stylesheet">
 		
 		<style>
-			:root {
-				--background-color: #000000;
-				--foreground-color: #FFFFFF;
-				--accent-color: #FBAAC0;
-			}
-			
 			body {
 				margin: 0;
 				font-family: sans-serif;
@@ -44,53 +39,6 @@
 			}
 			#player2 {
 				background: #00000F;
-			}
-			
-			#consent, #consent button {
-				font-size: 20pt;
-			}
-			#consent {
-				position: fixed;
-				top: 0;
-				bottom: 0;
-				box-sizing: border-box;
-				display: flex;
-				flex-direction: column;
-				justify-content: center;
-				align-items: center;
-				min-width: 100%;
-				min-height: 100vh;
-				padding: 1em;
-				color: var(--foreground-color);
-				background: var(--background-color);
-			}
-			
-			#consent button {
-				padding: 8px 16px;
-				border: solid 2px var(--foreground-color);
-				border-radius: 8px;
-				color: var(--foreground-color);
-				background: transparent;
-				transition: opacity 0.1s, box-shadow 0.1s;
-			}
-			#consent button:hover {
-				opacity: 0.5;
-			}
-			#consent button:focus {
-				box-shadow: 0 0 0 4px var(--accent-color);
-			}
-			
-			#consent a {
-				color: var(--accent-color);
-				text-decoration: none;
-				transition: opacity 0.1s;
-			}
-			#consent a:hover {
-				opacity: 0.5;
-			}
-			
-			#consent small {
-				font-size: 0.5em;
 			}
 		</style>
 		
