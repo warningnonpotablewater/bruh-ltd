@@ -15,7 +15,7 @@ const link = document.createElement("a");
 
 link.innerHTML = "Learn more";
 
-link.href = "https://gitlab.com/kirbykevinson/bruh.ltd/-/blob/master/LICENSE_LIST.md";
+link.href = "https://gitlab.com/kirbykevinson/bruh-ltd/-/blob/master/LICENSE_LIST.md";
 
 link.style.textDecoration = "underline";
 link.style.color = "#FBAAC0";
