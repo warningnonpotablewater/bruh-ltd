@@ -62,7 +62,7 @@
 				if (username) {
 					searchParams.set("username", username);
 					
-					location.search = searchParams.toString();
+					history.pushState({}, "", `?${searchParams.toString()}`);
 				}
 			}
 			
