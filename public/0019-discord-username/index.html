@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+
+<html lang="en-ca">
+	<head>
+		<title>Discord username</title>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link href="/styles/common.css" rel="stylesheet">
+		
+		<style>
+			@font-face {
+				src:
+					local("Source Sans Pro"),
+					url("/fonts/source-sans-pro.woff2");
+				font-family: "Source Sans Pro";
+				font-display: swap;
+			}
+			
+			::selection {
+				background: #7289DA;
+			}
+			
+			*, *::before, *::after {
+				box-sizing: border-box;
+			}
+			
+			body {
+				display: flex;
+				justify-content: center;
+				align-items: center;
+				width: 100%;
+				min-height: 100vh;
+				padding: 0;
+				margin: 0;
+				text-align: center;
+				font-family: "Source Sans Pro", sans-serif;
+				font-size: max(10vmin, 2em);
+				color: #FFFFFF;
+				background: #26262B;
+			}
+			
+			.page-wrapper {
+				padding: 32px;
+				border-radius: 5px;
+				background: #36393F;
+				box-shadow: 0 2px 10px 0 #00000033;
+			}
+		</style>
+		
+		<script src="/scripts/licensing.js" type="module"></script>
+		
+		<script type="module">
+			const searchParams = new URLSearchParams(location.search);
+			
+			let username = searchParams.get("username");
+			
+			if (!username) {
+				username = prompt("Enter your Discord username");
+				
+				if (username) {
+					searchParams.set("username", username);
+					
+					location.search = searchParams.toString();
+				}
+			}
+			
+			if (username) {
+				document.querySelector(".page-wrapper").innerText = username;
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div class="page-wrapper">jo<a href="/9999-nine-nine-nine-nine/" class="secret-link">h</a>n#0001</div>
+	</body>
+</html>
