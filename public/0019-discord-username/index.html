@@ -66,13 +66,19 @@
 				}
 			}
 			
+			const pageWrapper = document.querySelector(".page-wrapper");
+			
 			if (username) {
-				document.querySelector(".page-wrapper").innerText = username;
+				pageWrapper.innerText = username;
 			}
+			
+			pageWrapper.hidden = false;
 		</script>
 	</head>
 	
 	<body>
-		<div class="page-wrapper">jo<a href="/9999-nine-nine-nine-nine/" class="secret-link">h</a>n#0001</div>
+		<div class="page-wrapper" hidden>
+			jo<a href="/9999-nine-nine-nine-nine/" class="secret-link">h</a>n#0001
+		</div>
 	</body>
 </html>
