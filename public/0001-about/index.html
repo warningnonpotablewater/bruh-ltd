@@ -12,6 +12,21 @@
 		<link href="/styles/common.css" rel="stylesheet">
 		
 		<style>
+			:root {
+				--background-color: #FFFFFF;
+				--foreground-color: #000000;
+				--accent-color: #0000FF;
+			}
+			
+			* {
+				scrollbar-color: var(--background-color) var(--foreground-color);
+			}
+			
+			::selection {
+				color: var(--background-color);
+				background: var(--foreground-color);
+			}
+			
 			body {
 				display: flex;
 				align-items: center;
@@ -22,6 +37,7 @@
 				margin: 0;
 				font-size: 14pt;
 				font-family: "Times New Roman", serif;
+				color: var(--foreground-color);
 				background: #7F7F7F;
 			}
 			
@@ -30,8 +46,8 @@
 				min-width: 0;
 				max-width: 45em;
 				padding: 1em 2em;
-				border: solid 1px #000000;
-				background: #FFFFFF;
+				border: solid 1px var(--foreground-color);
+				background: var(--background-color);
 				box-shadow: 0.5em 0.5em #0000007F;
 			}
 			
@@ -40,6 +56,15 @@
 			}
 			.page-wrapper > *:last-child {
 				margin-bottom: 0;
+			}
+			
+			a {
+				text-decoration: none;
+				color: var(--accent-color);
+			}
+			
+			a:hover {
+				text-decoration: underline;
 			}
 		</style>
 		
