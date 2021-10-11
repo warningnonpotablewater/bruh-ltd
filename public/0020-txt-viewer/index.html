@@ -10,9 +10,22 @@
 		<link href="/styles/common.css" rel="stylesheet">
 		
 		<style>
+			@font-face {
+				src:
+					local("Courier Prime"),
+					url("/fonts/courier-prime.woff2");
+				font-family: "Courier Prime";
+				font-display: swap;
+			}
+			
 			:root {
 				--background-color: #000000;
 				--foreground-color: #00FF00;
+			}
+			
+			::selection {
+				color: var(--background-color);
+				background: var(--foreground-color);
 			}
 			
 			body {
@@ -40,7 +53,7 @@
 			#content {
 				max-width: 70ch;
 				margin: 0 auto;
-				font-family: monospace;
+				font-family: "Courier Prime", monospace;
 			}
 			#content.pre {
 				white-space: pre-wrap;
