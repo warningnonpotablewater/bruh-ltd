@@ -42,7 +42,7 @@
 				margin: 0 auto;
 				font-family: monospace;
 			}
-			pre#content {
+			#content.pre {
 				white-space: pre-wrap;
 				overflow-wrap: break-word;
 			}
@@ -74,6 +74,8 @@
 				}
 			}
 			
+			const content = document.querySelector("#content");
+			
 			if (filename) {
 				document.documentElement.className = "visible-scrollbar";
 				
@@ -82,9 +84,9 @@
 					" | " +
 					document.title;
 				
-				document.body.innerHTML = "<pre id=\"content\"></pre>";
+				content.innerText = "Loading...";
 				
-				const content = document.querySelector("#content");
+				content.className = "pre";
 				
 				fetch(filename)
 					.then((response) => {
@@ -101,11 +103,9 @@
 					.catch((error) => {
 						alert(error);
 					});
-			} else {
-				const content = document.querySelector("#content");
-				
-				content.hidden = false;
 			}
+			
+			content.hidden = false;
 		</script>
 	</head>
 	
