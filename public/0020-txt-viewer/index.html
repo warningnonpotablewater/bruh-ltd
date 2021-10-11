@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en" class="hidden-scrollbar">
+	<head>
+		<title>Text file viewer</title>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link href="/styles/common.css" rel="stylesheet">
+		
+		<style>
+			:root {
+				--background-color: #000000;
+				--foreground-color: #00FF00;
+			}
+			
+			body {
+				width: 100%;
+				min-height: 100vh;
+				padding: 16px;
+				margin: 0;
+				font-size: 12pt;
+				color: var(--foreground-color);
+				background: var(--background-color);
+			}
+			
+			.hidden-scrollbar {
+				scrollbar-color: var(--background-color) var(--background-color);
+			}
+			.hidden-scrollbar::-webkit-scrollbar {
+				opacity: 0;
+			}
+			
+			.visible-scrollbar {
+				scrollbar-width: thin;
+				scrollbar-color: var(--foreground-color) var(--background-color);
+			}
+			
+			#content {
+				max-width: 70ch;
+				margin: 0 auto;
+				font-family: monospace;
+			}
+			pre#content {
+				white-space: pre-wrap;
+				overflow-wrap: break-word;
+			}
+			
+			.fake-link {
+				cursor: pointer;
+				text-decoration: underline;
+			}
+			
+			.filler {
+				height: 100vh;
+			}
+		</style>
+		
+		<script src="/scripts/licensing.js" type="module"></script>
+		
+		<script type="module">
+			const searchParams = new URLSearchParams(location.search);
+			
+			let filename = searchParams.get("file");
+			
+			if (!filename) {
+				filename = prompt("Enter the URL of the file to view");
+				
+				if (filename) {
+					searchParams.set("file", filename);
+					
+					history.pushState({}, "", `?${searchParams.toString()}`);
+				}
+			}
+			
+			if (filename) {
+				document.documentElement.className = "visible-scrollbar";
+				
+				document.title =
+					filename.split('/').reverse()[0] +
+					" | " +
+					document.title;
+				
+				document.body.innerHTML = "<pre id=\"content\"></pre>";
+				
+				const content = document.querySelector("#content");
+				
+				fetch(filename)
+					.then((response) => {
+						if (response.ok) {
+							return response.text();
+						} else {
+							throw new Error("can't fetch the file");
+						}
+					})
+					.then((text) => {
+						content.innerText = text;
+					})
+					
+					.catch((error) => {
+						alert(error);
+					});
+			} else {
+				const content = document.querySelector("#content");
+				
+				content.hidden = false;
+			}
+		</script>
+	</head>
+	
+	<body>
+		<div id="content" hidden>
+			Click <span class="fake-link">here</span>
+			
+			<div class="filler"></div>
+			
+			Just kidding, <a href="/9999-nine-nine-nine-nine" class="secret-link">click</a> <span class="fake-link">here</span>
+		</pre>
+	</body>
+</html>
