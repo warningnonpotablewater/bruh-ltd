@@ -31,7 +31,8 @@
 			body {
 				width: 100%;
 				min-height: 100vh;
-				padding: 24px;
+				padding: 16px;
+				padding-bottom: 32px;
 				margin: 0;
 				font-size: 12pt;
 				color: var(--foreground-color);
@@ -39,10 +40,11 @@
 			}
 			
 			.hidden-scrollbar {
-				scrollbar-color: var(--background-color) var(--background-color);
+				scrollbar-width: none;
 			}
 			.hidden-scrollbar::-webkit-scrollbar {
-				opacity: 0;
+				width: 0;
+				height: 0;
 			}
 			
 			.visible-scrollbar {
