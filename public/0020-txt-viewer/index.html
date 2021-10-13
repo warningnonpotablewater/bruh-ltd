@@ -18,6 +18,17 @@
 				font-display: swap;
 			}
 			
+			@keyframes emergence {
+				0% {
+					height: 0px;
+					overflow: hidden;
+				}
+				100% {
+					height: calc(100vh - 48px);
+					overflow: hidden;
+				}
+			}
+			
 			:root {
 				--background-color: #000000;
 				--foreground-color: #00FF00;
@@ -113,6 +124,8 @@
 					})
 					.then((text) => {
 						content.innerText = text;
+						
+						content.style.animation = "linear 0.5s emergence";
 					})
 					
 					.catch((error) => {
