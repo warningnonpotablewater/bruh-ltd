@@ -1,13 +1,10 @@
-.PHONY: gitlab neocities neocities-supporter archive
+.PHONY: gitlab rsync archive
 
 gitlab:
 	git push
 
-neocities:
-	neocities push public
-
-neocities-supporter:
-	rclone sync public bruhltd: -P
+rsync:
+	rsync -rtvzP public/ root@bruh.ltd:/var/www/bruh-ltd
 
 archive:
 	zip -r $$(date +"%F")-web.bruh.ltd.zip *
