@@ -2,7 +2,6 @@ Bruh, Ltd is a company that sells portable toilets. Or is it?
 
 ## Dependencies
 
-* Neocities CLI - optional
 * rsync - optional
 
 ## How to deploy
