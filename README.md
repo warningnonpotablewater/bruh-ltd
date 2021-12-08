@@ -3,12 +3,12 @@ Bruh, Ltd is a company that sells portable toilets. Or is it?
 ## Dependencies
 
 * Neocities CLI - optional
-* rclone - optional
+* rsync - optional
 
 ## How to deploy
 
 ```
-make gitlab neocities[-supporter]
+make gitlab rsync
 ```
 
 See `Makefile` for more details.
