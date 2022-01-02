@@ -11,15 +11,21 @@
 		
 		<style>
 			body {
-				display: flex;
-				align-items: center;
-				justify-content: center;
 				width: 100vw;
 				height: 100vh;
 				padding: 0;
 				margin: 0;
 				overflow: hidden;
 				background: #000000;
+			}
+			
+			.page-wrapper {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100vw;
+				height: 100vh;
+				overflow: hidden;
 			}
 			
 			.secret-link {
@@ -52,6 +58,8 @@
 	</head>
 	
 	<body>
-		<a href="/0010-two-songs-one-page/" class="secret-link"></a>
+		<div class="page-wrapper">
+			<a href="/0010-two-songs-one-page/" class="secret-link"></a>
+		</div>
 	</body>
 </html>
