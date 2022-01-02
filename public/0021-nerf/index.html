@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+
+<html lang="en-ca">
+	<head>
+		<title>NERF</title>
+		
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<link href="/styles/common.css" rel="stylesheet">
+		
+		<style>
+			@keyframes clock {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+			}
+			@keyframes anticlock {
+				0% {
+					transform: rotate(360deg);
+				}
+				100% {
+					transform: rotate(0deg);
+				}
+			}
+			
+			body {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 100vh;
+				padding: 0;
+				margin: 0;
+				background: linear-gradient(to top,
+					#FBAAC0,
+					#0CAABF,
+					#FFFFFF,
+					#0CAABF,
+					#FBAAC0
+				);
+			}
+			
+			.page-wrapper {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 100%;
+				overflow: hidden;
+			}
+			
+			.umbrella {
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				width: 100%;
+				height: 100%;
+				background: url("umbrella.svg");
+				background-size: 50vmax;
+				background-position: center center;
+				background-repeat: no-repeat;
+				animation: infinite linear 3s anticlock;
+			}
+			
+			.triangle {
+				width: 150vmax;
+				height: 150vmax;
+				opacity: 0.8;
+				animation: infinite linear 2s clock;
+			}
+		</style>
+		
+		<script src="/scripts/licensing.js" type="module"></script>
+		
+		<script type="module">
+			let clickCount = 0;
+			
+			document.body.addEventListener("mousedown", () => {
+				clickCount++;
+				
+				if (clickCount >= 6) {
+					location = "/9999-nine-nine-nine-nine/";
+				}
+			});
+		</script>
+	</head>
+	
+	<body>
+		<div class="page-wrapper">
+			<div class="umbrella">
+				<img src="triangle.svg" class="triangle">
+			</div>
+		</div>
+	</body>
+</html>
