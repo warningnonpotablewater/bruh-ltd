@@ -10,3 +10,19 @@
 	color: inherit !important;
 	opacity: 1 !important;
 }
+
+.licensing {
+	all: initial;
+	position: fixed;
+	bottom: 0px;
+	right: 0px;
+	font-size: 12pt;
+	font-family: sans-serif;
+	color: #FFFFFF;
+	background: #0000007F;
+}
+
+.licensing a {
+	text-decoration: underline;
+	color: #FBAAC0;
+}
