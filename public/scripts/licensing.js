@@ -1,6 +1,6 @@
 const container = document.createElement("div");
 
-container.innerHTML = "© 2021 Bruh, Ltd. ";
+container.innerHTML = "© 2022 Bruh, Ltd. ";
 
 container.className = "licensing";
 

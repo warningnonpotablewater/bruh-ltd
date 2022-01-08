@@ -51,4 +51,4 @@
   [source](https://commons.wikimedia.org/wiki/File:Phoenix_dwarf_galaxy.jpg)
   > Copyright 2011 ESA/Hubble
 * All other files except embedded ones
-  > Copyright 2020, 2021 Kirby Kevinson
+  > Copyright 2020, 2021, 2022 Kirby Kevinson
