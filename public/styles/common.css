@@ -21,6 +21,10 @@
 	color: #FFFFFF;
 	background: #0000007F;
 }
+.licensing.left {
+	left: 0;
+	right: unset;
+}
 
 .licensing a {
 	text-decoration: underline;
