@@ -88,6 +88,40 @@
 						}
 					});
 					
+					let
+						lastTouchX = -1,
+						lastTouchY = -1;
+					
+					document.body.addEventListener("touchmove", (event) => {
+						if (lastTouchX < 0) {
+							lastTouchX = event.touches[0].clientX;
+							lastTouchY = event.touches[0].clientY;
+							
+							return;
+						}
+						
+						const
+							dx = lastTouchX - event.touches[0].clientX,
+							dy = lastTouchY - event.touches[0].clientY;
+						
+						lastTouchX = event.touches[0].clientX;
+						lastTouchY = event.touches[0].clientY;
+						
+						if (Math.abs(dx) > Math.abs(dy)) {
+							if (dx > 0) {
+								this.direction = "left";
+							} else {
+								this.direction = "right";
+							}
+						} else {
+							if (dy > 0) {
+								this.direction = "up";
+							} else {
+								this.direction = "down";
+							}
+						}
+					});
+					
 					document.body.addEventListener("dblclick", () => {
 						if (!this.dead || this.score < 6) {
 							return;
