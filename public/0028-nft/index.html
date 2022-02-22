@@ -47,8 +47,6 @@
 		<script src="/scripts/licensing.js" type="module"></script>
 		
 		<script type="module">
-			const requiredClicks = Math.floor(Math.random() * 3);
-			
 			let clickCount = 0;
 			
 			document.body.addEventListener("dblclick", (event) => {
@@ -56,7 +54,7 @@
 				
 				clickCount++;
 				
-				if (clickCount >= requiredClicks) {
+				if (clickCount >= 4) {
 					if (Math.random() < 0.5) {
 						location = "/9999-nine-nine-nine-nine/";
 					} else {
