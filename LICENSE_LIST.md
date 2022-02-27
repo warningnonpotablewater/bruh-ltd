@@ -11,6 +11,13 @@
   [source](https://commons.wikimedia.org/wiki/File:Chinese_HDTV_test_card.png)
 * `public/images/cursors/`
 
+## Creative Commons Attribution 3.0 Unported Public License (`LICENSE_CC_BY_3`)
+
+* `public/0029-word-chain/words.txt` -
+  [source](https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt)
+  > (EFF's long word list (for use with five dice))
+  > Copyright 2016 Electronic Frontier Foundation
+
 ## Creative Commons Attribution-ShareAlike 2.0 Generic Public License (`LICENSE_CC_BY_SA_2.html`)
 
 * `public/0002-baako/ian-mcdiarmid.jpg` -
