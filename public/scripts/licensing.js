@@ -8,7 +8,7 @@ const link = document.createElement("a");
 
 link.innerHTML = "Learn more";
 
-link.href = "https://gitlab.com/kirbykevinson/bruh-ltd/-/blob/HEAD/LICENSE_LIST.md";
+link.href = "/licensing/";
 
 container.appendChild(link);
 container.innerHTML += ".";
