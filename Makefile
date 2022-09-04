@@ -1,4 +1,4 @@
 .PHONY: archive
 
 archive:
-	zip -r $$(date +"%F")-web.bruh.ltd.zip *
+	zip -r $$(date +"%F")-bruh-ltd.zip *
