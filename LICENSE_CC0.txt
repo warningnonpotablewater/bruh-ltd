@@ -1,1 +1,0 @@
-public/licensing/LICENSE_CC0.txt
