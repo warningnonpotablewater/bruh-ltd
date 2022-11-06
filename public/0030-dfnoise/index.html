@@ -49,6 +49,7 @@
 				animation-iteration-count: infinite;
 				animation-timing-function: linear;
 				mix-blend-mode: difference;
+				filter: blur(0.3vmin);
 			}
 			
 			#b128 {
@@ -65,6 +66,14 @@
 				background-image: url("32.png");
 				animation-name: scroll-xy;
 				animation-duration: 32s;
+			}
+			
+			#b0 {
+				background-image:
+					url("0.png"),
+					linear-gradient(to bottom right, black, white);
+				background-size: auto;
+				filter: none;
 			}
 		</style>
 		
@@ -85,5 +94,6 @@
 		<div class="layer" id="b128"></div>
 		<div class="layer" id="b64"></div>
 		<div class="layer" id="b32"></div>
+		<div class="layer" id="b0"></div>
 	</body>
 </html>
