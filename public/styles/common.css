@@ -18,8 +18,8 @@
 	right: 0px;
 	font-size: 12pt;
 	font-family: sans-serif;
-	color: #FFFFFF;
-	background: #0000007F;
+	color: #ffffff;
+	background: #0000007f;
 }
 .licensing.left {
 	left: 0;
@@ -28,5 +28,5 @@
 
 .licensing a {
 	text-decoration: underline;
-	color: #FBAAC0;
+	color: #fbaac0;
 }
