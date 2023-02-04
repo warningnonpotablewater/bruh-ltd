@@ -20,6 +20,7 @@
 	font-family: sans-serif;
 	color: #ffffff;
 	background: #0000007f;
+	z-index: 9999;
 }
 .licensing.left {
 	left: 0;
