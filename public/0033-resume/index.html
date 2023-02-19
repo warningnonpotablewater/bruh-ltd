@@ -29,7 +29,7 @@
 			}
 			
 			body {
-				max-width: 800px;
+				max-width: 700px;
 				margin: 0 auto;
 				padding: 1em;
 				background: #f0ede8;
@@ -38,7 +38,6 @@
 			main * {
 				overflow-wrap: break-word;
 			}
-			
 			
 			main > *:first-child {
 				margin-top: 0;
@@ -51,17 +50,13 @@
 				line-height: 1;
 			}
 			
-			h1 {
-				text-align: center;
-			}
-			
 			@media all and (min-width: 800px) {
 				h2 {
 					margin-bottom: -1.6em;
 				}
 				
-				ul, p, h3 {
-					padding-left: 15rem;
+				ul, p, h1, h3 {
+					padding-left: 12rem;
 				}
 				
 				ul {
@@ -77,6 +72,10 @@
 			a {
 				color: #ad1429;
 			}
+			
+			a:hover {
+				text-decoration: none;
+			}
 		</style>
 		
 		<script src="/scripts/licensing.js" type="module"></script>
@@ -87,7 +86,7 @@
 				
 				if (
 					selection.includes("Ruby") &&
-					selection.includes("Projects")
+					selection.includes("Learn more")
 				) {
 					location = "/9999-nine-nine-nine-nine/";
 				}
@@ -107,16 +106,22 @@
 			
 			<ul>
 				<li>
-					<span class="caption">Website:</span>
-					<a href="https://www.bruh.ltd/">https://www.bruh.ltd/</a>
+					<span class="caption">Email:</span>
+					<a href="mailto:warningnonpotablewater@outlook.com">
+						warningnonpotablewater@outlook.com
+					</a>
 				</li>
 				<li>
-					<span class="caption">Email:</span>
-					<a href="mailto:warningnonpotablewater@outlook.com">warningnonpotablewater@outlook.com</a>
+					<span class="caption">Telegram:</span>
+					<a href="https://t.me/warningnonpotablewater">
+						t.me/warningnonpotablewater
+					</a>
 				</li>
 				<li>
 					<span class="caption">GitLab:</span>
-					<a href="https://gitlab.com/warningnonpotablewater/">https://gitlab.com/warningnonpotablewater/</a>
+					<a href="https://gitlab.com/warningnonpotablewater/">
+						gitlab.com/warningnonpotablewater/
+					</a>
 				</li>
 			</ul>
 			
@@ -132,8 +137,8 @@
 			<h3>Languages</h3>
 			
 			<ul>
+				<li>English (C1 Advanced)</li>
 				<li>Russian (native)</li>
-				<li>English (advanced)</li>
 			</ul>
 			
 			<h3>Miscellaneous</h3>
@@ -145,18 +150,28 @@
 			
 			<h2>Projects</h2>
 			
-			<h3><a href="https://webbotron.bruh.ltd/">Webbotron</a> (JavaScript)</h3>
+			<h3>
+				<a href="https://www.bruh.ltd/">
+					www.bruh.ltd
+				</a> (Hugo)
+			</h3>
+			
+			<p>'90s-styled personal website and memory archive.</p>
+			
+			<h3>
+				<a href="https://webbotron.bruh.ltd/">
+					webbotron.bruh.ltd
+				</a> (JavaScript + Lit)
+			</h3>
 			
 			<p>Name picker web app for nerds.</p>
 			
-			<h3><a href="https://gitlab.com/warningnonpotablewater/libwebring">libwebring</a> (JavaScript)</h3>
+			<h3>
+				<a href="https://npmjs.com/libwebring">
+					npmjs.com/libwebring
+				</a> (TypeScript)</h3>
 			
 			<p>Library for making webrings.</p>
-			
-			<h3><a href="https://gitlab.com/warningnonpotablewater/libinput-config">libinput-config</a> (C)</h3>
-			
-			<p>Allows input device configuration for Wayland compositors that don't
-			implement it.</p>
 		</main>
 	</body>
 </html>
