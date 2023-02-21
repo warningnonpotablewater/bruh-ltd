@@ -1,118 +1,118 @@
 <!DOCTYPE html>
 
 <html lang="en-us">
-	<head>
-		<title>Pedometer</title>
-		
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<link href="/styles/common.css" rel="stylesheet">
-		
-		<style>
-			body {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				min-height: 100vh;
-				padding: 0;
-				margin: 0;
-			}
-			
-			#form {
-				margin: 1em;
-			}
-			
-			#form > *:first-child {
-				margin-top: 0;
-			}
-			#form > *:last-child {
-				margin-bottom: 0;
-			}
-			
-			.secret-link-container {
-				float: right;
-				cursor: default;
-				opacity: 0;
-			}
-		</style>
-		
-		<script src="/scripts/licensing.js" type="module"></script>
-		<script src="https://www.gstatic.com/charts/loader.js"></script>
-		
-		<script type="module">
-			function showData(nickname, fullName) {
-				fetch(`${nickname}.csv`)
-					.then(response => response.text())
-					.then((csv) => {
-						google.charts.load("current", {"packages": ["corechart"]});
-						
-						google.charts.setOnLoadCallback(() => {
-							const data = new google.visualization.DataTable();
-							
-							data.addColumn("date", "Date");
-							data.addColumn("number", "Steps");
-							
-							data.addRows(csv.split("\n").map((line) => {
-								const pair = line.split(";");
-								
-								return [new Date(parseInt(pair[0])), parseInt(pair[1])];
-							}).slice(0, -1));
-							
-							const chart = new google.visualization.LineChart(
-								document.querySelector('#chart')
-							);
-							
-							chart.draw(data, {
-								title: `Steps per day`,
-								
-								explorer: {
-									axis: "horizontal",
-									maxZoomIn: 0.1
-								},
-								curveType: "function",
-								focusTarget: "category",
-								
-								width: innerWidth * 0.95,
-								height: innerHeight * 0.95
-							});
-						});
-					});
-			}
-			
-			const
-				form = document.querySelector("#form"),
-				switcher = document.querySelector("#switcher");
-			
-			form.addEventListener("submit", (event) => {
-				event.preventDefault();
-				
-				form.remove();
-				
-				showData(
-					switcher.value,
-					switcher.options[switcher.selectedIndex].text
-				);
-			});
-		</script>
-	</head>
-	
-	<body>
-		<form id="form">
-			<h2>Choose a person</h2>
-			
-			<p><select id="switcher" disabled>
-				<option value="Pedometer">There's no choice</option>
-			</select></p>
-			
-			<div class="secret-link-container">
-				<a href="/0019-discord-username/" class="secret-link" tabindex="-1">→</a>
-			</div>
-			
-			<p><button>Show data</button></p>
-		</form>
-		
-		<div id="chart"></div>
-	</body>
+    <head>
+        <title>Pedometer</title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="/styles/common.css" rel="stylesheet">
+        
+        <style>
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                min-height: 100vh;
+                padding: 0;
+                margin: 0;
+            }
+            
+            #form {
+                margin: 1em;
+            }
+            
+            #form > *:first-child {
+                margin-top: 0;
+            }
+            #form > *:last-child {
+                margin-bottom: 0;
+            }
+            
+            .secret-link-container {
+                float: right;
+                cursor: default;
+                opacity: 0;
+            }
+        </style>
+        
+        <script src="/scripts/licensing.js" type="module"></script>
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        
+        <script type="module">
+            function showData(nickname, fullName) {
+                fetch(`${nickname}.csv`)
+                    .then(response => response.text())
+                    .then((csv) => {
+                        google.charts.load("current", {"packages": ["corechart"]});
+                        
+                        google.charts.setOnLoadCallback(() => {
+                            const data = new google.visualization.DataTable();
+                            
+                            data.addColumn("date", "Date");
+                            data.addColumn("number", "Steps");
+                            
+                            data.addRows(csv.split("\n").map((line) => {
+                                const pair = line.split(";");
+                                
+                                return [new Date(parseInt(pair[0])), parseInt(pair[1])];
+                            }).slice(0, -1));
+                            
+                            const chart = new google.visualization.LineChart(
+                                document.querySelector('#chart')
+                            );
+                            
+                            chart.draw(data, {
+                                title: `Steps per day`,
+                                
+                                explorer: {
+                                    axis: "horizontal",
+                                    maxZoomIn: 0.1
+                                },
+                                curveType: "function",
+                                focusTarget: "category",
+                                
+                                width: innerWidth * 0.95,
+                                height: innerHeight * 0.95
+                            });
+                        });
+                    });
+            }
+            
+            const
+                form = document.querySelector("#form"),
+                switcher = document.querySelector("#switcher");
+            
+            form.addEventListener("submit", (event) => {
+                event.preventDefault();
+                
+                form.remove();
+                
+                showData(
+                    switcher.value,
+                    switcher.options[switcher.selectedIndex].text
+                );
+            });
+        </script>
+    </head>
+    
+    <body>
+        <form id="form">
+            <h2>Choose a person</h2>
+            
+            <p><select id="switcher" disabled>
+                <option value="Pedometer">There's no choice</option>
+            </select></p>
+            
+            <div class="secret-link-container">
+                <a href="/0019-discord-username/" class="secret-link" tabindex="-1">→</a>
+            </div>
+            
+            <p><button>Show data</button></p>
+        </form>
+        
+        <div id="chart"></div>
+    </body>
 </html>

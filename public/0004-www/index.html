@@ -1,166 +1,166 @@
 <!DOCTYPE html>
 
 <html lang="en-ch">
-	<head>
-		<title>Welcome to the World Wide Web!</title>
-		
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<link href="/styles/common.css" rel="stylesheet">
-		
-		<style>
-			@font-face {
-				src:
-					local("Source Sans Pro"),
-					url("/fonts/source-sans-pro.woff2");
-				font-family: "Source Sans Pro";
-				font-display: swap;
-			}
-			
-			@keyframes spinning {
-				0% {
-					background-position: left;
-				}
-				100% {
-					background-position: right;
-				}
-			}
-			
-			* {
-				font-family: "Source Sans Pro", sans-serif;
-			}
-			
-			::selection {
-				background: #00007f;
-				color: #ffffff;
-			}
-			
-			body {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				width: 100%;
-				min-height: 100vh;
-				padding: 0;
-				margin: 0;
-				font-size: 16pt;
-				color: #ffffff;
-				cursor: url("/images/cursors/default.png") 1 2, default;
-				background:
-					linear-gradient(#0000007f, #0000007f),
-					#000000 url(stars.png);
-			}
-			
-			.page-wrapper {
-				display: flex;
-				flex-wrap: wrap;
-				align-items: center;
-				justify-content: center;
-				min-width: 0;
-			}
-			
-			.page-wrapper > * {
-				min-width: 0;
-				margin: 16px;
-			}
-			
-			.globe {
-				flex-shrink: 0;
-				image-rendering: -moz-crisp-edges;
-				image-rendering: pixelated;
-				width: 256px;
-				height: 256px;
-				border-radius: 50%;
-				background:
-					url("land.png"),
-					
-					linear-gradient(to top,
-						#0033cc,
-						#3333ff,
-						#3366ff,
-						#0099ff,
-						#33ccff,
-						#33ffff,
-						#ccffff
-					);
-				animation: infinite linear 34s spinning;
-				transform: rotate(-23.44deg);
-			}
-			
-			.pre-title {
-				font-size: 1.5em;
-				color: #ffff33;
-				text-shadow: 0 1px #666600;
-			}
-			
-			.title {
-				line-height: 0.9em;
-				font-size: 5em;
-				font-weight: bold;
-				color: #00ccff;
-				text-shadow: 0 3px #006699;
-			}
-			
-			.search {
-				display: flex;
-				margin: 16px;
-			}
-			
-			.search > input {
-				font-size: inherit;
-				color: #000000;
-			}
-			
-			.search > .bar {
-				flex-grow: 1;
-				min-width: 0;
-				cursor: url("/images/cursors/text.png") 4 8, text;
-				border: none;
-				background: #ffffff;
-			}
-			
-			.search > .bar, .search > .button:active:hover {
-				border-top: solid 2px #808080;
-				border-left: solid 2px #808080;
-				border-bottom: solid 2px #ffffff;
-				border-right: solid 2px #ffffff;
-			}
-			
-			.search > .button {
-				flex-shrink: 0;
-				width: 96px;
-				margin-left: 16px;
-				cursor: inherit;
-				border-top: solid 2px #ffffff;
-				border-left: solid 2px #ffffff;
-				border-bottom: solid 2px #808080;
-				border-right: solid 2px #808080;
-				background: #c0c0c0;
-			}
-			
-			.search > .button:active:hover {
-				background: #a0a0a0;
-			}
-		</style>
-		
-		<script src="/scripts/licensing.js" type="module"></script>
-	</head>
-	
-	<body>
-		<div class="page-wrapper">
-			<div class="globe"></div>
-			
-			<div>
-				<div class="pre-title">Welcome to the</div>
-				<div class="title">World Wide Web<a href="/0005-user-agent-test/" class="secret-link" tabindex="-1"><i>!</i></a></div>
-				
-				<form class="search" action="https://duckduckgo.com/">
-					<input type="text" name="q" class="bar">
-					
-					<input type="submit" class="button" value="Search">
-				</form>
-			</div>
-		</div>
-	</body>
+    <head>
+        <title>Welcome to the World Wide Web!</title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="/styles/common.css" rel="stylesheet">
+        
+        <style>
+            @font-face {
+                src:
+                    local("Source Sans Pro"),
+                    url("/fonts/source-sans-pro.woff2");
+                font-family: "Source Sans Pro";
+                font-display: swap;
+            }
+            
+            @keyframes spinning {
+                0% {
+                    background-position: left;
+                }
+                100% {
+                    background-position: right;
+                }
+            }
+            
+            * {
+                font-family: "Source Sans Pro", sans-serif;
+            }
+            
+            ::selection {
+                background: #00007f;
+                color: #ffffff;
+            }
+            
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                min-height: 100vh;
+                padding: 0;
+                margin: 0;
+                font-size: 16pt;
+                color: #ffffff;
+                cursor: url("/images/cursors/default.png") 1 2, default;
+                background:
+                    linear-gradient(#0000007f, #0000007f),
+                    #000000 url(stars.png);
+            }
+            
+            .page-wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: center;
+                min-width: 0;
+            }
+            
+            .page-wrapper > * {
+                min-width: 0;
+                margin: 16px;
+            }
+            
+            .globe {
+                flex-shrink: 0;
+                image-rendering: -moz-crisp-edges;
+                image-rendering: pixelated;
+                width: 256px;
+                height: 256px;
+                border-radius: 50%;
+                background:
+                    url("land.png"),
+                    
+                    linear-gradient(to top,
+                        #0033cc,
+                        #3333ff,
+                        #3366ff,
+                        #0099ff,
+                        #33ccff,
+                        #33ffff,
+                        #ccffff
+                    );
+                animation: infinite linear 34s spinning;
+                transform: rotate(-23.44deg);
+            }
+            
+            .pre-title {
+                font-size: 1.5em;
+                color: #ffff33;
+                text-shadow: 0 1px #666600;
+            }
+            
+            .title {
+                line-height: 0.9em;
+                font-size: 5em;
+                font-weight: bold;
+                color: #00ccff;
+                text-shadow: 0 3px #006699;
+            }
+            
+            .search {
+                display: flex;
+                margin: 16px;
+            }
+            
+            .search > input {
+                font-size: inherit;
+                color: #000000;
+            }
+            
+            .search > .bar {
+                flex-grow: 1;
+                min-width: 0;
+                cursor: url("/images/cursors/text.png") 4 8, text;
+                border: none;
+                background: #ffffff;
+            }
+            
+            .search > .bar, .search > .button:active:hover {
+                border-top: solid 2px #808080;
+                border-left: solid 2px #808080;
+                border-bottom: solid 2px #ffffff;
+                border-right: solid 2px #ffffff;
+            }
+            
+            .search > .button {
+                flex-shrink: 0;
+                width: 96px;
+                margin-left: 16px;
+                cursor: inherit;
+                border-top: solid 2px #ffffff;
+                border-left: solid 2px #ffffff;
+                border-bottom: solid 2px #808080;
+                border-right: solid 2px #808080;
+                background: #c0c0c0;
+            }
+            
+            .search > .button:active:hover {
+                background: #a0a0a0;
+            }
+        </style>
+        
+        <script src="/scripts/licensing.js" type="module"></script>
+    </head>
+    
+    <body>
+        <div class="page-wrapper">
+            <div class="globe"></div>
+            
+            <div>
+                <div class="pre-title">Welcome to the</div>
+                <div class="title">World Wide Web<a href="/0005-user-agent-test/" class="secret-link" tabindex="-1"><i>!</i></a></div>
+                
+                <form class="search" action="https://duckduckgo.com/">
+                    <input type="text" name="q" class="bar">
+                    
+                    <input type="submit" class="button" value="Search">
+                </form>
+            </div>
+        </div>
+    </body>
 </html>

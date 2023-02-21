@@ -1,103 +1,103 @@
 <!DOCTYPE html>
 
 <html lang="en-us">
-	<head>
-		<title>Cursor race</title>
-		
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<link href="/styles/common.css" rel="stylesheet">
-		
-		<style>
-			:root {
-				color-scheme: light dark;
-			}
-			
-			body {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				min-height: 100vh;
-				padding: 0;
-				margin: 0;
-				font-size: 14pt;
-				font-family: sans-serif;
-			}
-			
-			.page-wrapper {
-				min-width: 0;
-				padding: 1em;
-			}
-			
-			.page-wrapper > *:first-child {
-				margin-top: 0;
-			}
-			.page-wrapper > *:last-child {
-				margin-bottom: 0;
-			}
-		</style>
-		
-		<script src="/scripts/licensing.js" type="module"></script>
-		
-		<script type="module">
-			let
-				dx = 0,
-				dy = 0,
-				
-				dxElement = document.querySelector("#dx"),
-				dyElement = document.querySelector("#dy"),
-				
-				askedYet = false;
-			
-			function update() {
-				dxElement.innerText = dx;
-				dyElement.innerText = dy;
-				
-				if (!askedYet && dx + dy >= 420690) {
-					askedYet = true;
-					
-					if (!confirm("Do you want to go to the next page?")) {
-						location = "/0027-sneck/";
-					}
-				}
-			}
-			
-			document.body.addEventListener("mousemove", (event) => {
-				dx += Math.abs(event.movementX);
-				dy += Math.abs(event.movementY);
-				
-				update();
-			});
-			
-			let
-				lastTouchX = -1,
-				lastTouchY = -1;
-			
-			document.body.addEventListener("touchmove", (event) => {
-				if (lastTouchX < 0) {
-					lastTouchX = event.touches[0].clientX;
-					lastTouchY = event.touches[0].clientY;
-					
-					return;
-				}
-				
-				dx += Math.abs(lastTouchX - event.touches[0].clientX);
-				dy += Math.abs(lastTouchY - event.touches[0].clientY);
-				
-				lastTouchX = event.touches[0].clientX;
-				lastTouchY = event.touches[0].clientY;
-				
-				update();
-			});
-		</script>
-	</head>
-	
-	<body>
-		<div class="page-wrapper">
-			<p>Horizontal distance: <span id="dx">0</span></p>
-			<p>Veritcal distance: <span id="dy">0</span></p>
-		</div>
-	</body>
+    <head>
+        <title>Cursor race</title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="/styles/common.css" rel="stylesheet">
+        
+        <style>
+            :root {
+                color-scheme: light dark;
+            }
+            
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                min-height: 100vh;
+                padding: 0;
+                margin: 0;
+                font-size: 14pt;
+                font-family: sans-serif;
+            }
+            
+            .page-wrapper {
+                min-width: 0;
+                padding: 1em;
+            }
+            
+            .page-wrapper > *:first-child {
+                margin-top: 0;
+            }
+            .page-wrapper > *:last-child {
+                margin-bottom: 0;
+            }
+        </style>
+        
+        <script src="/scripts/licensing.js" type="module"></script>
+        
+        <script type="module">
+            let
+                dx = 0,
+                dy = 0,
+                
+                dxElement = document.querySelector("#dx"),
+                dyElement = document.querySelector("#dy"),
+                
+                askedYet = false;
+            
+            function update() {
+                dxElement.innerText = dx;
+                dyElement.innerText = dy;
+                
+                if (!askedYet && dx + dy >= 420690) {
+                    askedYet = true;
+                    
+                    if (!confirm("Do you want to go to the next page?")) {
+                        location = "/0027-sneck/";
+                    }
+                }
+            }
+            
+            document.body.addEventListener("mousemove", (event) => {
+                dx += Math.abs(event.movementX);
+                dy += Math.abs(event.movementY);
+                
+                update();
+            });
+            
+            let
+                lastTouchX = -1,
+                lastTouchY = -1;
+            
+            document.body.addEventListener("touchmove", (event) => {
+                if (lastTouchX < 0) {
+                    lastTouchX = event.touches[0].clientX;
+                    lastTouchY = event.touches[0].clientY;
+                    
+                    return;
+                }
+                
+                dx += Math.abs(lastTouchX - event.touches[0].clientX);
+                dy += Math.abs(lastTouchY - event.touches[0].clientY);
+                
+                lastTouchX = event.touches[0].clientX;
+                lastTouchY = event.touches[0].clientY;
+                
+                update();
+            });
+        </script>
+    </head>
+    
+    <body>
+        <div class="page-wrapper">
+            <p>Horizontal distance: <span id="dx">0</span></p>
+            <p>Veritcal distance: <span id="dy">0</span></p>
+        </div>
+    </body>
 </html>

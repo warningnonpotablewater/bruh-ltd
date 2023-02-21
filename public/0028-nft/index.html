@@ -1,80 +1,80 @@
 <!DOCTYPE html>
 
 <html lang="en-us">
-	<head>
-		<title>NFT</title>
-		
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<link href="/styles/common.css" rel="stylesheet">
-		
-		<style>
-			body {
-				display: flex;
-				justify-content: center;
-				align-items: center;
-				width: 100%;
-				min-height: 100vh;
-				padding: 0;
-				margin: 0;
-				font-size: 14pt;
-				background: #222222;
-			}
-			
-			.page-wrapper {
-				margin: 1em;
-			}
-			
-			#nft {
-				max-width: 100%;
-				user-select: none;
-				pointer-events: none;
-				box-shadow: 0 0.25em 1em #0000007f;
-			}
-			
-			.watermark {
-				position: fixed;
-				top: 0;
-				left: 0;
-				width: 100vw;
-				height: 100vh;
-				pointer-events: none;
-				background: url("watermark.png");
-				z-index: 9999;
-			}
-		</style>
-		
-		<script src="/scripts/licensing.js" type="module"></script>
-		
-		<script type="module">
-			const requiredClicks = 2 + Math.floor(Math.random() * 3);
-			
-			let clickCount = 0;
-			
-			document.body.addEventListener("dblclick", (event) => {
-				event.preventDefault();
-				
-				clickCount++;
-				
-				if (clickCount >= requiredClicks) {
-					if (Math.random() < 0.5) {
-						location = "/0029-word-chain/";
-					} else {
-						clickCount = -Infinity;
-						
-						alert("Sorry, you weren't lucky enough to complete this page. Refresh and try again.");
-					}
-				}
-			});
-		</script>
-	</head>
-	
-	<body>
-		<div class="page-wrapper">
-			<img src="nft.png" id="nft" alt="NFT">
-		</div>
-		
-		<div class="watermark"></div>
-	</body>
+    <head>
+        <title>NFT</title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="/styles/common.css" rel="stylesheet">
+        
+        <style>
+            body {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                min-height: 100vh;
+                padding: 0;
+                margin: 0;
+                font-size: 14pt;
+                background: #222222;
+            }
+            
+            .page-wrapper {
+                margin: 1em;
+            }
+            
+            #nft {
+                max-width: 100%;
+                user-select: none;
+                pointer-events: none;
+                box-shadow: 0 0.25em 1em #0000007f;
+            }
+            
+            .watermark {
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                pointer-events: none;
+                background: url("watermark.png");
+                z-index: 9999;
+            }
+        </style>
+        
+        <script src="/scripts/licensing.js" type="module"></script>
+        
+        <script type="module">
+            const requiredClicks = 2 + Math.floor(Math.random() * 3);
+            
+            let clickCount = 0;
+            
+            document.body.addEventListener("dblclick", (event) => {
+                event.preventDefault();
+                
+                clickCount++;
+                
+                if (clickCount >= requiredClicks) {
+                    if (Math.random() < 0.5) {
+                        location = "/0029-word-chain/";
+                    } else {
+                        clickCount = -Infinity;
+                        
+                        alert("Sorry, you weren't lucky enough to complete this page. Refresh and try again.");
+                    }
+                }
+            });
+        </script>
+    </head>
+    
+    <body>
+        <div class="page-wrapper">
+            <img src="nft.png" id="nft" alt="NFT">
+        </div>
+        
+        <div class="watermark"></div>
+    </body>
 </html>

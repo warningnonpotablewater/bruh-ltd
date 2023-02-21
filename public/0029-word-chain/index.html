@@ -1,126 +1,126 @@
 <!DOCTYPE html>
 
 <html lang="en-ru">
-	<head>
-		<title>Word chain</title>
-		
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<link href="/styles/common.css" rel="stylesheet">
-		
-		<style>
-			body {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				min-height: 100vh;
-				padding: 0;
-				margin: 0;
-				font-size: 20pt;
-				font-family: sans-serif;
-				color: #ffffffcf;
-				background: #081020;
-			}
-			
-			.page-wrapper {
-				flex-grow: 1;
-				min-width: 0;
-				max-width: 16em;
-				text-align: center;
-				border-radius: 0.25em;
-				background: #3949ab;
-				box-shadow: 0 0.25em 1em #0000007f;
-			}
-			
-			#word {
-				padding: 1em;
-				margin: 0;
-				overflow-wrap: break-word;
-				font-size: 1.5em;
-			}
-			
-			#input {
-				display: block;
-				width: 100%;
-				padding: 0.25em 0.5em;
-				text-align: inherit;
-				font-family: inherit;
-				font-size: inherit;
-				border: none;
-				border-radius: 0 0 0.25em 0.25em;
-				color: inherit;
-				background: #18227c;
-			}
-		</style>
-		
-		<script src="/scripts/licensing.js" type="module"></script>
-		
-		<script type="module">
-			let words = null;
-			
-			const
-				word = document.querySelector("#word"),
-				input = document.querySelector("#input");
-			
-			async function loadWords() {
-				words = {};
-				
-				const response = await fetch("words.txt");
-				const text = await response.text();
-				
-				for (const word of text.split("\n")) {
-					const letter = word[0];
-					
-					if (!words[letter]) {
-						words[letter] = [];
-					}
-					
-					words[letter].push(word);
-				}
-			}
-			
-			function nextWord() {
-				if (!words) {
-					return;
-				}
-				
-				const letter = input.value.slice(-1) || "b";
-				const matches = words[letter];
-				
-				if (!matches) {
-					return;
-				}
-				
-				word.innerText = matches[
-					Math.floor(Math.random() * matches.length)
-				];
-				
-				input.value = "";
-			}
-			
-			input.addEventListener("change", () => {
-				if (input.value.trim().toLowerCase() == "next page") {
-					location = "/0030-dfnoise/";
-					
-					return;
-				}
-				
-				if (word.innerText.slice(-1) == input.value[0]) {
-					nextWord();
-				}
-			});
-			
-			loadWords().then(() => nextWord());
-		</script>
-	</head>
-	
-	<body>
-		<div class="page-wrapper">
-			<div id="word">Loading...</div>
-			
-			<input type="text" id="input" placeholder="Your word" autocomplete="off">
-		</div>
-	</body>
+    <head>
+        <title>Word chain</title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="/styles/common.css" rel="stylesheet">
+        
+        <style>
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                min-height: 100vh;
+                padding: 0;
+                margin: 0;
+                font-size: 20pt;
+                font-family: sans-serif;
+                color: #ffffffcf;
+                background: #081020;
+            }
+            
+            .page-wrapper {
+                flex-grow: 1;
+                min-width: 0;
+                max-width: 16em;
+                text-align: center;
+                border-radius: 0.25em;
+                background: #3949ab;
+                box-shadow: 0 0.25em 1em #0000007f;
+            }
+            
+            #word {
+                padding: 1em;
+                margin: 0;
+                overflow-wrap: break-word;
+                font-size: 1.5em;
+            }
+            
+            #input {
+                display: block;
+                width: 100%;
+                padding: 0.25em 0.5em;
+                text-align: inherit;
+                font-family: inherit;
+                font-size: inherit;
+                border: none;
+                border-radius: 0 0 0.25em 0.25em;
+                color: inherit;
+                background: #18227c;
+            }
+        </style>
+        
+        <script src="/scripts/licensing.js" type="module"></script>
+        
+        <script type="module">
+            let words = null;
+            
+            const
+                word = document.querySelector("#word"),
+                input = document.querySelector("#input");
+            
+            async function loadWords() {
+                words = {};
+                
+                const response = await fetch("words.txt");
+                const text = await response.text();
+                
+                for (const word of text.split("\n")) {
+                    const letter = word[0];
+                    
+                    if (!words[letter]) {
+                        words[letter] = [];
+                    }
+                    
+                    words[letter].push(word);
+                }
+            }
+            
+            function nextWord() {
+                if (!words) {
+                    return;
+                }
+                
+                const letter = input.value.slice(-1) || "b";
+                const matches = words[letter];
+                
+                if (!matches) {
+                    return;
+                }
+                
+                word.innerText = matches[
+                    Math.floor(Math.random() * matches.length)
+                ];
+                
+                input.value = "";
+            }
+            
+            input.addEventListener("change", () => {
+                if (input.value.trim().toLowerCase() == "next page") {
+                    location = "/0030-dfnoise/";
+                    
+                    return;
+                }
+                
+                if (word.innerText.slice(-1) == input.value[0]) {
+                    nextWord();
+                }
+            });
+            
+            loadWords().then(() => nextWord());
+        </script>
+    </head>
+    
+    <body>
+        <div class="page-wrapper">
+            <div id="word">Loading...</div>
+            
+            <input type="text" id="input" placeholder="Your word" autocomplete="off">
+        </div>
+    </body>
 </html>

@@ -1,99 +1,99 @@
 <!DOCTYPE html>
 
 <html lang="en-us">
-	<head>
-		<title>Deep fried noise</title>
-		
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<link href="/styles/common.css" rel="stylesheet">
-		
-		<style>
-			@keyframes scroll-x {
-				0% {
-					background-position: 0% 0%;
-				}
-				100% {
-					background-position: 100vmin 0;
-				}
-			}
-			@keyframes scroll-y {
-				0% {
-					background-position: 0% 0%;
-				}
-				100% {
-					background-position: 0 100vmin;
-				}
-			}
-			@keyframes scroll-xy {
-				0% {
-					background-position: 0% 0%;
-				}
-				100% {
-					background-position: 100vmin 100vmin;
-				}
-			}
-			
-			* {
-				image-rendering: pixelated;
-			}
-			
-			.layer {
-				position: fixed;
-				top: 0;
-				bottom: 0;
-				left: 0;
-				right: 0;
-				background-size: 100vmin 100vmin;
-				animation-iteration-count: infinite;
-				animation-timing-function: linear;
-				mix-blend-mode: difference;
-				filter: blur(0.3vmin);
-			}
-			
-			#b128 {
-				background-image: url("128.png");
-				animation-name: scroll-x;
-				animation-duration: 8s;
-			}
-			#b64 {
-				background-image: url("64.png");
-				animation-name: scroll-y;
-				animation-duration: 16s;
-			}
-			#b32 {
-				background-image: url("32.png");
-				animation-name: scroll-xy;
-				animation-duration: 32s;
-			}
-			
-			#b0 {
-				background-image:
-					url("0.png"),
-					linear-gradient(to bottom right, black, white);
-				background-size: auto;
-				filter: none;
-			}
-		</style>
-		
-		<script type="module">
-			history.pushState({}, "");
-			
-			window.addEventListener("popstate", (event) => {
-				event.preventDefault();
-				
-				location = "/0031-credits/";
-			});
-		</script>
-		
-		<script src="/scripts/licensing.js" type="module"></script>
-	</head>
-	
-	<body>
-		<div class="layer" id="b128"></div>
-		<div class="layer" id="b64"></div>
-		<div class="layer" id="b32"></div>
-		<div class="layer" id="b0"></div>
-	</body>
+    <head>
+        <title>Deep fried noise</title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="/styles/common.css" rel="stylesheet">
+        
+        <style>
+            @keyframes scroll-x {
+                0% {
+                    background-position: 0% 0%;
+                }
+                100% {
+                    background-position: 100vmin 0;
+                }
+            }
+            @keyframes scroll-y {
+                0% {
+                    background-position: 0% 0%;
+                }
+                100% {
+                    background-position: 0 100vmin;
+                }
+            }
+            @keyframes scroll-xy {
+                0% {
+                    background-position: 0% 0%;
+                }
+                100% {
+                    background-position: 100vmin 100vmin;
+                }
+            }
+            
+            * {
+                image-rendering: pixelated;
+            }
+            
+            .layer {
+                position: fixed;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background-size: 100vmin 100vmin;
+                animation-iteration-count: infinite;
+                animation-timing-function: linear;
+                mix-blend-mode: difference;
+                filter: blur(0.3vmin);
+            }
+            
+            #b128 {
+                background-image: url("128.png");
+                animation-name: scroll-x;
+                animation-duration: 8s;
+            }
+            #b64 {
+                background-image: url("64.png");
+                animation-name: scroll-y;
+                animation-duration: 16s;
+            }
+            #b32 {
+                background-image: url("32.png");
+                animation-name: scroll-xy;
+                animation-duration: 32s;
+            }
+            
+            #b0 {
+                background-image:
+                    url("0.png"),
+                    linear-gradient(to bottom right, black, white);
+                background-size: auto;
+                filter: none;
+            }
+        </style>
+        
+        <script type="module">
+            history.pushState({}, "");
+            
+            window.addEventListener("popstate", (event) => {
+                event.preventDefault();
+                
+                location = "/0031-credits/";
+            });
+        </script>
+        
+        <script src="/scripts/licensing.js" type="module"></script>
+    </head>
+    
+    <body>
+        <div class="layer" id="b128"></div>
+        <div class="layer" id="b64"></div>
+        <div class="layer" id="b32"></div>
+        <div class="layer" id="b0"></div>
+    </body>
 </html>

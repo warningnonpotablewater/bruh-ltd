@@ -1,47 +1,47 @@
 <!DOCTYPE html>
 
 <html lang="en-us">
-	<head>
-		<title>Subpixels</title>
-		
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<link href="/styles/common.css" rel="stylesheet">
-		<link href="/styles/consent.css" rel="stylesheet">
-		
-		<style>
-			@keyframes background-scroll {
-				0% {
-					background-position-x: 0;
-				}
-				100% {
-					background-position-x: 60px;
-				}
-			}
-			
-			body {
-				margin: 0;
-				font-family: sans-serif;
-				background: url("rgb.png");
-				animation: infinite linear 1s background-scroll;
-			}
-		</style>
-		
-		<script src="/scripts/licensing.js" type="module"></script>
-		
-		<script type="module">
-			document.querySelector("#button").addEventListener("click", () => {
-				document.querySelector("#consent").remove();
-			})
-		</script>
-	</head>
-	
-	<body>
-		<div id="consent">
-			<p>Please <a href="/0018-pedometer/" class="secret-link" tabindex="-1">press</a> this button:</p>
-			
-			<button id="button">I'm not prone to seizures</button>
-		</div>
-	</body>
+    <head>
+        <title>Subpixels</title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="/styles/common.css" rel="stylesheet">
+        <link href="/styles/consent.css" rel="stylesheet">
+        
+        <style>
+            @keyframes background-scroll {
+                0% {
+                    background-position-x: 0;
+                }
+                100% {
+                    background-position-x: 60px;
+                }
+            }
+            
+            body {
+                margin: 0;
+                font-family: sans-serif;
+                background: url("rgb.png");
+                animation: infinite linear 1s background-scroll;
+            }
+        </style>
+        
+        <script src="/scripts/licensing.js" type="module"></script>
+        
+        <script type="module">
+            document.querySelector("#button").addEventListener("click", () => {
+                document.querySelector("#consent").remove();
+            })
+        </script>
+    </head>
+    
+    <body>
+        <div id="consent">
+            <p>Please <a href="/0018-pedometer/" class="secret-link" tabindex="-1">press</a> this button:</p>
+            
+            <button id="button">I'm not prone to seizures</button>
+        </div>
+    </body>
 </html>

@@ -1,170 +1,170 @@
 <!DOCTYPE html>
 
 <html lang="en-no">
-	<head>
-		<title>rec</title>
-		
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		
-		<link href="/styles/common.css" rel="stylesheet">
-		
-		<style id="blinking-style"></style>
-		
-		<style>
-			@font-face {
-				src:
-					local("Courier Prime"),
-					url("/fonts/courier-prime.woff2");
-				font-family: "Courier Prime";
-				font-display: swap;
-			}
-			
-			@keyframes emergence {
-				0% {
-					opacity: 0;
-				}
-				100% {
-					opacity: 1;
-				}
-			}
-			
-			:root {
-				color-scheme: light dark;
-			}
-			
-			body {
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				width: 100%;
-				min-height: 100vh;
-				padding: 0;
-				margin: 0;
-				font-size: 14pt;
-				font-family: "Courier Prime", "Courier New", monospace;
-			}
-			
-			.page-wrapper {
-				display: flex;
-				flex-wrap: wrap;
-				min-width: 0;
-				max-width: 12em;
-				padding: 1em;
-				font-size: 4vmin;
-			}
-			
-			.page-wrapper > div {
-				margin: 0.125em 0.5em;
-			}
-			
-			.dot {
-				font-weight: bold;
-				animation: infinite linear 1s blinking;
-			}
-			.chara {
-				animation: infinite linear 1s emergence;
-			}
-			
-			#rec-switcher {
-				position: fixed;
-				top: 1vmin;
-				left: 50%;
-				font-size: 3vmin;
-				transform: translateX(-50%);
-			}
-		</style>
-		
-		<script src="/scripts/licensing.js" type="module"></script>
-		
-		<script type="module">
-			const
-				blinkingStyle = document.querySelector("#blinking-style"),
-				container = document.querySelector(".page-wrapper"),
-				
-				blinkingPattern = "1011101011011111",
-				
-				recs = {
-					original: "iygmdclp5u24sq9fhnvbk1zerj7o.63xta8w",
-					base36: "0123456789abcdefghijklmnopqrstuvwxyz",
-					"next page": "lmao"
-				};
-			
-			let idiotCount = 0;
-			
-			function render(rec) {
-				container.innerHTML = "";
-				
-				for (const chara of rec) {
-					const element = document.createElement("div");
-					
-					element.innerText = chara;
-					
-					if (chara == ".") {
-						element.className = "dot";
-					} else {
-						element.className = "chara";
-					}
-					
-					container.appendChild(element);
-				}
-			}
-			
-			function setupBlinking() {
-				blinkingStyle.innerHTML += "@keyframes blinking {";
-				
-				for (let i = 0; i < blinkingPattern.length; i++) {
-					const step = 100 / blinkingPattern.length;
-					
-					blinkingStyle.innerHTML += `${i * step}% {`
-					
-					if (blinkingPattern[i] == "0") {
-						blinkingStyle.innerHTML += "color: black;";
-					} else {
-						blinkingStyle.innerHTML += "color: red;";
-					}
-					
-					blinkingStyle.innerHTML += "} ";
-				}
-				
-				blinkingStyle.innerHTML += "}";
-			}
-			
-			function populateSwitcher() {
-				const switcher = document.querySelector("#rec-switcher");
-				
-				for (const rec of Object.keys(recs)) {
-					const option = document.createElement("option");
-					
-					option.innerText = rec;
-					
-					switcher.appendChild(option);
-				}
-				
-				switcher.addEventListener("change", () => {
-					if (switcher.value == "next page") {
-						idiotCount++;
-						
-						if (idiotCount >= 3) {
-							location = "/0026-cursor-race/";
-						}
-					}
-					
-					render(recs[switcher.value]);
-				});
-			}
-			
-			populateSwitcher();
-			setupBlinking();
-			render(recs.original);
-		</script>
-	</head>
-	
-	<body>
-		<div class="page-wrapper"></div>
-		
-		<select id="rec-switcher"></select>
-		
-		<div class="licensing left">Inspired by <a href="https://fauux.neocities.org/rec.gif">this GIF</a>.</div>
-	</body>
+    <head>
+        <title>rec</title>
+        
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <link href="/styles/common.css" rel="stylesheet">
+        
+        <style id="blinking-style"></style>
+        
+        <style>
+            @font-face {
+                src:
+                    local("Courier Prime"),
+                    url("/fonts/courier-prime.woff2");
+                font-family: "Courier Prime";
+                font-display: swap;
+            }
+            
+            @keyframes emergence {
+                0% {
+                    opacity: 0;
+                }
+                100% {
+                    opacity: 1;
+                }
+            }
+            
+            :root {
+                color-scheme: light dark;
+            }
+            
+            body {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                min-height: 100vh;
+                padding: 0;
+                margin: 0;
+                font-size: 14pt;
+                font-family: "Courier Prime", "Courier New", monospace;
+            }
+            
+            .page-wrapper {
+                display: flex;
+                flex-wrap: wrap;
+                min-width: 0;
+                max-width: 12em;
+                padding: 1em;
+                font-size: 4vmin;
+            }
+            
+            .page-wrapper > div {
+                margin: 0.125em 0.5em;
+            }
+            
+            .dot {
+                font-weight: bold;
+                animation: infinite linear 1s blinking;
+            }
+            .chara {
+                animation: infinite linear 1s emergence;
+            }
+            
+            #rec-switcher {
+                position: fixed;
+                top: 1vmin;
+                left: 50%;
+                font-size: 3vmin;
+                transform: translateX(-50%);
+            }
+        </style>
+        
+        <script src="/scripts/licensing.js" type="module"></script>
+        
+        <script type="module">
+            const
+                blinkingStyle = document.querySelector("#blinking-style"),
+                container = document.querySelector(".page-wrapper"),
+                
+                blinkingPattern = "1011101011011111",
+                
+                recs = {
+                    original: "iygmdclp5u24sq9fhnvbk1zerj7o.63xta8w",
+                    base36: "0123456789abcdefghijklmnopqrstuvwxyz",
+                    "next page": "lmao"
+                };
+            
+            let idiotCount = 0;
+            
+            function render(rec) {
+                container.innerHTML = "";
+                
+                for (const chara of rec) {
+                    const element = document.createElement("div");
+                    
+                    element.innerText = chara;
+                    
+                    if (chara == ".") {
+                        element.className = "dot";
+                    } else {
+                        element.className = "chara";
+                    }
+                    
+                    container.appendChild(element);
+                }
+            }
+            
+            function setupBlinking() {
+                blinkingStyle.innerHTML += "@keyframes blinking {";
+                
+                for (let i = 0; i < blinkingPattern.length; i++) {
+                    const step = 100 / blinkingPattern.length;
+                    
+                    blinkingStyle.innerHTML += `${i * step}% {`
+                    
+                    if (blinkingPattern[i] == "0") {
+                        blinkingStyle.innerHTML += "color: black;";
+                    } else {
+                        blinkingStyle.innerHTML += "color: red;";
+                    }
+                    
+                    blinkingStyle.innerHTML += "} ";
+                }
+                
+                blinkingStyle.innerHTML += "}";
+            }
+            
+            function populateSwitcher() {
+                const switcher = document.querySelector("#rec-switcher");
+                
+                for (const rec of Object.keys(recs)) {
+                    const option = document.createElement("option");
+                    
+                    option.innerText = rec;
+                    
+                    switcher.appendChild(option);
+                }
+                
+                switcher.addEventListener("change", () => {
+                    if (switcher.value == "next page") {
+                        idiotCount++;
+                        
+                        if (idiotCount >= 3) {
+                            location = "/0026-cursor-race/";
+                        }
+                    }
+                    
+                    render(recs[switcher.value]);
+                });
+            }
+            
+            populateSwitcher();
+            setupBlinking();
+            render(recs.original);
+        </script>
+    </head>
+    
+    <body>
+        <div class="page-wrapper"></div>
+        
+        <select id="rec-switcher"></select>
+        
+        <div class="licensing left">Inspired by <a href="https://fauux.neocities.org/rec.gif">this GIF</a>.</div>
+    </body>
 </html>
