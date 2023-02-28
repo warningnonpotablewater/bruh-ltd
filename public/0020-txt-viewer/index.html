@@ -3,12 +3,12 @@
 <html lang="en" class="hidden-scrollbar">
     <head>
         <title>Text file viewer</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             @font-face {
                 src:
@@ -17,7 +17,7 @@
                 font-family: "Courier Prime";
                 font-display: swap;
             }
-            
+
             @keyframes emergence {
                 0% {
                     height: 0px;
@@ -28,17 +28,17 @@
                     overflow: hidden;
                 }
             }
-            
+
             :root {
                 --background-color: #000000;
                 --foreground-color: #00ff00;
             }
-            
+
             ::selection {
                 color: var(--background-color);
                 background: var(--foreground-color);
             }
-            
+
             body {
                 width: 100%;
                 min-height: 100vh;
@@ -49,7 +49,7 @@
                 color: var(--foreground-color);
                 background: var(--background-color);
             }
-            
+
             .hidden-scrollbar {
                 scrollbar-width: none;
             }
@@ -57,12 +57,12 @@
                 width: 0;
                 height: 0;
             }
-            
+
             .visible-scrollbar {
                 scrollbar-width: thin;
                 scrollbar-color: var(--foreground-color) var(--background-color);
             }
-            
+
             #content {
                 max-width: 70ch;
                 margin: 0 auto;
@@ -73,48 +73,48 @@
                 overflow-wrap: break-word;
                 tab-size: 4;
             }
-            
+
             .fake-link {
                 cursor: pointer;
                 text-decoration: underline;
             }
-            
+
             .filler {
                 height: 100vh;
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
-        
+
         <script type="module">
             const searchParams = new URLSearchParams(location.search);
-            
+
             let filename = searchParams.get("file");
-            
+
             if (!filename) {
                 filename = prompt("Enter the URL of the file to view");
-                
+
                 if (filename) {
                     searchParams.set("file", filename);
-                    
+
                     history.pushState({}, "", `?${searchParams.toString()}`);
                 }
             }
-            
+
             const content = document.querySelector("#content");
-            
+
             if (filename) {
                 document.documentElement.className = "visible-scrollbar";
-                
+
                 document.title =
                     filename.split('/').reverse()[0] +
                     " | " +
                     document.title;
-                
+
                 content.innerText = "Loading...";
-                
+
                 content.className = "pre";
-                
+
                 fetch(filename)
                     .then((response) => {
                         if (response.ok) {
@@ -125,25 +125,25 @@
                     })
                     .then((text) => {
                         content.innerText = text;
-                        
+
                         content.style.animation = "linear 0.5s emergence";
                     })
-                    
+
                     .catch((error) => {
                         alert(error);
                     });
             }
-            
+
             content.hidden = false;
         </script>
     </head>
-    
+
     <body>
         <div id="content" hidden>
             Click <span class="fake-link">here</span>
-            
+
             <div class="filler"></div>
-            
+
             Just kidding, <a href="/0021-nerf/" class="secret-link" tabindex="-1">click</a> <span class="fake-link">here</span>
         </pre>
     </body>

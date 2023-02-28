@@ -3,17 +3,17 @@
 <html lang="en-us">
     <head>
         <title>Guess the color</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             :root {
                 --border: solid 1px #fbaac0af;
             }
-            
+
             body {
                 display: flex;
                 align-items: center;
@@ -27,7 +27,7 @@
                 color: #ffffffcf;
                 background: #1e191d;
             }
-            
+
             .page-wrapper {
                 flex-grow: 1;
                 min-width: 0;
@@ -36,15 +36,15 @@
                 border: var(--border);
                 background: #58152f;
             }
-            
+
             .page-wrapper > *:not(:last-child) {
                 border-bottom: var(--border);
             }
-            
+
             h1 {
                 font-size: 1.5em;
             }
-            
+
             #color {
                 width: 5em;
                 height: 5em;
@@ -52,7 +52,7 @@
                 border: var(--border);
                 background: #7f7f7f;
             }
-            
+
             #status {
                 margin: 0.5em 0;
             }
@@ -70,7 +70,7 @@
                 content: "✅ CORRECT";
                 color: #4caf50;
             }
-            
+
             #guess {
                 display: block;
                 width: 100%;
@@ -83,9 +83,9 @@
                 background: #171216;
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
-        
+
         <script type="module">
             const
                 color = document.querySelector("#color"),
@@ -93,47 +93,47 @@
                 guess = document.querySelector("#guess"),
                 correctColor =
                     `#${Math.floor(Math.random() * 2 ** 24).toString(16)}`;
-            
+
             color.style.background = correctColor;
-            
+
             guess.addEventListener("input", () => {
                 switch (guess.value.trim().toLowerCase()) {
                 case "":
                     status.className = "";
-                    
+
                     break;
                 case "i don't know": // FALLTHROUGH
                 case correctColor:
                     status.className = "correct";
                     guess.readOnly = true;
-                    
+
                     setTimeout(() => {
                         location = "/0025-rec/";
                     }, 5000 + Math.random() * 5000);
-                    
+
                     break;
                 default:
                     status.className = "wrong";
-                    
+
                     break;
                 }
             });
         </script>
     </head>
-    
+
     <body>
         <div class="page-wrapper">
             <div>
                 <h1>Guess the color</h1>
-                
+
                 <div id="color"></div>
-                
+
                 <div id="status"></div>
             </div>
-            
+
             <input type="text" id="guess" placeholder="ENTER HERE" autocomplete="off">
         </div>
-        
+
         <div class="licensing left">Inspired by <a href="https://hosma.neocities.org/misc/cyrillic/">this page</a>.</div>
     </body>
 </html>

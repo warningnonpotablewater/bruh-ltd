@@ -3,12 +3,12 @@
 <html lang="en-us">
     <head>
         <title>PIN code</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             body {
                 display: flex;
@@ -22,18 +22,18 @@
                 font-family: sans-serif;
                 background: #afafaf;
             }
-            
+
             .page-wrapper {
                 flex-grow: 1;
                 min-width: 0;
                 max-width: 18em;
                 padding: 1em;
             }
-            
+
             #pin-code, .buttons button {
                 border: solid 2px #7f7f7f;
             }
-            
+
             #pin-code {
                 display: block;
                 width: 100%;
@@ -46,13 +46,13 @@
                 color: #00ff00;
                 background: #000000;
             }
-            
+
             .buttons {
                 display: flex;
                 justify-content: center;
                 flex-wrap: wrap;
             }
-            
+
             .buttons button {
                 padding: 0.4em 0.9em;
                 margin: 0.1em;
@@ -60,35 +60,35 @@
                 border-radius: 50%;
                 background: linear-gradient(to top, #afafaf, #efefef);
             }
-            
+
             .buttons button:active {
                 background: linear-gradient(to bottom, #afafaf, #efefef);
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
-        
+
         <script type="module">
             const
                 correctPinCode = "177013",
-                
+
                 pinCode = document.querySelector("#pin-code"),
                 buttons = Array.from(
                     document.querySelectorAll(".buttons button")
                 );
-            
+
             for (let i = buttons.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
-                
+
                 [buttons[i], buttons[j]] = [buttons[j], buttons[i]];
             }
-            
+
             for (let i = 0; i < buttons.length; i++) {
                 buttons[i].innerText = i;
-                
+
                 buttons[i].addEventListener("click", () => {
                     pinCode.value += i;
-                    
+
                     if (pinCode.value == correctPinCode.slice(
                         0, pinCode.value.length
                     )) {
@@ -98,7 +98,7 @@
                     } else {
                         if (pinCode.value.length >= 4) {
                             alert("Wrong PIN code. Please try again");
-                            
+
                             pinCode.value = "";
                         }
                     }
@@ -106,11 +106,11 @@
             }
         </script>
     </head>
-    
+
     <body>
         <div class="page-wrapper">
             <input type="text" id="pin-code" readonly autocomplete="off">
-            
+
             <div class="buttons">
                 <button>0</button>
                 <button>0</button>

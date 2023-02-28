@@ -3,12 +3,12 @@
 <html lang="en-us">
     <head>
         <title>NERF</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             @keyframes clock {
                 0% {
@@ -26,7 +26,7 @@
                     transform: rotate(0deg);
                 }
             }
-            
+
             body {
                 display: flex;
                 align-items: center;
@@ -43,7 +43,7 @@
                     #fbaac0
                 );
             }
-            
+
             .page-wrapper {
                 display: flex;
                 align-items: center;
@@ -52,7 +52,7 @@
                 height: 100%;
                 overflow: hidden;
             }
-            
+
             .umbrella {
                 display: flex;
                 align-items: center;
@@ -65,7 +65,7 @@
                 background-repeat: no-repeat;
                 animation: infinite linear 3s anticlock;
             }
-            
+
             .triangle {
                 width: 150vmax;
                 height: 150vmax;
@@ -73,22 +73,22 @@
                 animation: infinite linear 2s clock;
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
-        
+
         <script type="module">
             let clickCount = 0;
-            
+
             document.body.addEventListener("mousedown", () => {
                 clickCount++;
-                
+
                 if (clickCount >= 21) {
                     location = "/0022-checkerboard/";
                 }
             });
         </script>
     </head>
-    
+
     <body>
         <div class="page-wrapper">
             <div class="umbrella">

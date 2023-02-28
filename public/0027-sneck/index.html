@@ -3,18 +3,18 @@
 <html lang="en-ru">
     <head>
         <title>Sneck</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             * {
                 image-rendering: -moz-crisp-edges;
                 image-rendering: pixelated;
             }
-            
+
             body {
                 display: flex;
                 align-items: center;
@@ -25,7 +25,7 @@
                 margin: 0;
                 background: #000000;
             }
-            
+
             #canvas {
                 width: 100vmin;
                 height: 100vmin;
@@ -33,80 +33,80 @@
                 background: #5c6bc0;
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
-        
+
         <script type="module">
             class Game {
                 constructor() {
                     this.canvas = document.querySelector("#canvas");
                     this.context = this.canvas.getContext("2d");
-                    
+
                     this.frameCount = 0;
-                    
+
                     this.dead = false;
                     this.score = 0;
-                    
+
                     this.fieldSize = 40;
-                    
+
                     this.borderColor = "#ef5350";
                     this.fieldColor = "#5c6bc0";
                     this.snakeColor = "#ffffff";
                     this.appleColor = "#66bb6a";
-                    
+
                     this.direction = "up";
-                    
+
                     this.snake = [];
                     this.apple = [0, 0];
                 }
-                
+
                 run() {
                     this.canvas.width = this.fieldSize;
                     this.canvas.height = this.fieldSize;
-                    
+
                     this.drawField();
                     this.spawnApple();
-                    
+
                     document.body.addEventListener("keydown", event => {
                         switch (event.code) {
                         case "ArrowUp":
                             this.direction = "up";
-                            
+
                             break;
                         case "ArrowDown":
                             this.direction = "down";
-                            
+
                             break;
                         case "ArrowLeft":
                             this.direction = "left";
-                            
+
                             break;
                         case "ArrowRight":
                             this.direction = "right";
-                            
+
                             break;
                         }
                     });
-                    
+
                     let
                         lastTouchX = -1,
                         lastTouchY = -1;
-                    
+
                     document.body.addEventListener("touchmove", (event) => {
                         if (lastTouchX < 0) {
                             lastTouchX = event.touches[0].clientX;
                             lastTouchY = event.touches[0].clientY;
-                            
+
                             return;
                         }
-                        
+
                         const
                             dx = lastTouchX - event.touches[0].clientX,
                             dy = lastTouchY - event.touches[0].clientY;
-                        
+
                         lastTouchX = event.touches[0].clientX;
                         lastTouchY = event.touches[0].clientY;
-                        
+
                         if (Math.abs(dx) > Math.abs(dy)) {
                             if (dx > 0) {
                                 this.direction = "left";
@@ -121,34 +121,34 @@
                             }
                         }
                     });
-                    
+
                     document.body.addEventListener("dblclick", () => {
                         if (!this.dead || this.score < 6) {
                             return;
                         }
-                        
+
                         this.score = 0;
-                        
+
                         if (confirm("Do you want not to go to the next page?")) {
                             location = "/0028-nft/";
                         }
                     })
-                    
+
                     this.move();
                 }
-                
+
                 drawPixel(x, y, color) {
                     this.context.fillStyle = color;
-                    
+
                     this.context.fillRect(x, y, 1, 1);
                 }
-                
+
                 drawField() {
                     this.snake.push([
                         Math.floor(this.fieldSize / 2),
                         Math.floor(this.fieldSize / 2)
                     ]);
-                    
+
                     for (let y = 0; y < this.fieldSize; y++) {
                         for (let x = 0; x < this.fieldSize; x++) {
                             if (
@@ -161,15 +161,15 @@
                             }
                         }
                     }
-                    
+
                     this.drawPixel(
                         this.snake[0][0],
                         this.snake[0][1],
-                        
+
                         this.snakeColor
                     );
                 }
-                
+
                 spawnApple() {
                     do {
                         this.apple = [
@@ -180,46 +180,46 @@
                         a[0] == this.apple[0] &&
                         a[1] == this.apple[1]
                     ));
-                    
+
                     this.drawPixel(this.apple[0], this.apple[1], this.appleColor);
                 }
-                
+
                 move() {
                     if (this.dead) {
                         return;
                     }
-                    
+
                     this.frameCount++;
-                    
+
                     if (this.frameCount % 6 != 0) {
                         window.requestAnimationFrame(() => this.move());
-                        
+
                         return;
                     }
-                    
+
                     let
                         tail = this.snake[0],
                         head = this.snake[this.snake.length - 1];
-                    
+
                     switch (this.direction) {
                     case "up":
                         head = [head[0], head[1] - 1];
-                        
+
                         break;
                     case "down":
                         head = [head[0], head[1] + 1];
-                        
+
                         break;
                     case "left":
                         head = [head[0] - 1, head[1]];
-                        
+
                         break;
                     case "right":
                         head = [head[0] + 1, head[1]];
-                        
+
                         break;
                     }
-                    
+
                     if (
                         head[0] == 0 ||
                         head[0] == this.fieldSize - 1 ||
@@ -231,38 +231,38 @@
                         )
                     ) {
                         this.die();
-                        
+
                         return;
                     }
-                    
+
                     if (head[0] == this.apple[0] && head[1] == this.apple[1]) {
                         this.score++;
-                        
+
                         this.spawnApple();
                     } else {
                         this.drawPixel(tail[0], tail[1], this.fieldColor);
                         this.snake.shift();
                     }
-                    
+
                     this.drawPixel(head[0], head[1], this.snakeColor);
                     this.snake.push(head)
-                    
+
                     window.requestAnimationFrame(() => this.move());
                 }
-                
+
                 die() {
                     alert(`You died. Your score is ${this.score}.`);
-                    
+
                     this.dead = true;
                 }
             }
-            
+
             window.game = new Game();
-            
+
             game.run();
         </script>
     </head>
-    
+
     <body>
         <canvas id="canvas"></canvas>
     </body>

@@ -3,22 +3,22 @@
 <html lang="en-us">
     <head>
         <title>User agent test</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             :root {
                 color-scheme: light dark;
             }
-            
+
             * {
                 image-rendering: -moz-crisp-edges;
                 image-rendering: pixelated;
             }
-            
+
             body {
                 display: flex;
                 justify-content: center;
@@ -32,53 +32,53 @@
                 color: #000000;
                 background: #ffffff url("light-grid.png");
             }
-            
+
             @media (prefers-color-scheme: dark) {
                 body {
                     color: #ffffff;
                     background: #000000 url("dark-grid.png");
                 }
             }
-            
+
             .page-wrapper {
                 overflow-x: scroll;
                 min-width: 0;
                 max-width: 24em;
                 margin: 16px;
             }
-            
+
             .filler {
                 width: 200%;
                 height: 1px;
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
     </head>
-    
+
     <body bgcolor="#ffffff" background="light-grid.png">
         <div class="page-wrapper">
             <noscript>JavaScript disabled</noscript>
-            
+
             <p><script>
                 document.write(navigator.userAgent);
             </script></p>
-            
+
             <p><script>
                 document.write(
                     window.innerWidth + "x" +
                     window.innerHeight + ", "
                 );
-                
+
                 document.write(navigator.language);
             </script></p>
-            
+
             <p>
                 default,
                 <font face="sans-serif">sans-serif</font>,
                 <font face="serif">serif</font>
             </p>
-            
+
             <p>
                 <a href="/0006-gunbuster-clock/" class="secret-link" tabindex="-1">
                     <button>Button</button>
@@ -88,7 +88,7 @@
                 <input type="text" value="Text field">
                 <input type="date" value="2020-02-29">
             </p>
-            
+
             <div class="filler"></div>
         </div>
     </body>

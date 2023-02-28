@@ -3,12 +3,12 @@
 <html lang="en-us">
     <head>
         <title>Weather</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             body {
                 display: flex;
@@ -23,7 +23,7 @@
                 background: linear-gradient(to top, #ffffff, #bbdefb);
                 background-attachment: fixed;
             }
-            
+
             .page-wrapper {
                 flex-grow: 1;
                 min-width: 0;
@@ -34,32 +34,32 @@
                 background: linear-gradient(to top, #eeeeee, #ffffff);
                 box-shadow: 0 0.5em 1em #0000007f;
             }
-            
+
             .page-wrapper > *:first-child {
                 margin-top: 0;
             }
             .page-wrapper > *:last-child {
                 margin-bottom: 0;
             }
-            
+
             p {
                 margin: 0.25em 0;
             }
-            
+
             a {
                 text-decoration: none;
                 color: #3f51b5;
             }
-            
+
             a:hover {
                 text-decoration: underline;
             }
-            
+
             .two-column {
                 display: flex;
                 flex-wrap: wrap;
             }
-            
+
             .two-column > * {
                 flex-basis: 15rem;
                 flex-grow: 1;
@@ -67,29 +67,29 @@
             .two-column > *:first-child {
                 margin-right: 1rem;
             }
-            
+
             .secret-link-container {
                 float: right;
                 cursor: default;
                 opacity: 0;
             }
-            
+
             #place {
                 font-size: 1.5em;
                 font-weight: bold;
             }
-            
+
             #temperature {
                 font-size: 5em;
                 font-weight: bold;
             }
-            
+
             .misc {
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
             }
-            
+
             #map {
                 width: 100%;
                 height: 13em;
@@ -99,78 +99,78 @@
                 background: #0000003f;
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
-        
+
         <script type="module">
             function showWeather(data) {
                 const
                     placeholder = document.querySelector("#placeholder"),
                     weather = document.querySelector("#weather"),
-                    
+
                     place = document.querySelector("#place"),
                     status = document.querySelector("#status"),
-                    
+
                     temperature = document.querySelector("#temperature"),
-                    
+
                     humidity = document.querySelector("#humidity"),
                     wind = document.querySelector("#wind"),
-                    
+
                     map = document.querySelector("#map");
-                
+
                 place.innerText =
                     data.nearest_area[0].areaName[0].value + ", " +
                     data.nearest_area[0].country[0].value;
                 status.innerText = data.current_condition[0].weatherDesc[0].value;
-                
+
                 temperature.innerText = `${data.current_condition[0].temp_C}°C`;
-                
+
                 humidity.innerText = `${data.current_condition[0].humidity}%`;
                 wind.innerText =
                     `${data.current_condition[0].windspeedKmph} kmph ` +
                     data.current_condition[0].winddir16Point;
-                
+
                 map.src =
                     "https://www.openstreetmap.org/export/embed.html?" +
                     "marker=" +
                         `${data.nearest_area[0].latitude},` +
                         `${data.nearest_area[0].longitude}&` +
                     `layer=cyclemap`;
-                
+
                 placeholder.hidden = true;
                 weather.hidden = false;
             }
-            
+
             function fetchWeather() {
                 fetch("https://wttr.in/?format=j1")
                     .then((response) => response.json())
                     .then((data) => {
                         localStorage.setItem("last-update", (new Date()).toISOString());
                         localStorage.setItem("weather", JSON.stringify(data));
-                        
+
                         showWeather(data);
                     })
-                    
+
                     .catch((error) => {
                         alert(error);
                     });
             }
-            
+
             const
                 currentTime = new Date(),
                 lastUpdateTime = new Date(localStorage.getItem("last-update"));
-            
+
             if (lastUpdateTime && currentTime - lastUpdateTime < 600000) {
                 const rawData = localStorage.getItem("weather");
-                
+
                 let data = null;
-                
+
                 try {
                     data = JSON.parse(rawData);
                 } catch (error) {
                     alert(error);
                 }
-                
+
                 if (data) {
                     showWeather(data);
                 } else {
@@ -181,30 +181,30 @@
             }
         </script>
     </head>
-    
+
     <body>
         <div class="page-wrapper">
             <div class="secret-link-container">
                 <a href="/0017-subpixels/" class="secret-link" tabindex="-1">→</a>
             </div>
-            
+
             <div id="placeholder">Loading the weather...</div>
-            
+
             <div id="weather" hidden>
                 <div id="place">Moscow, Russia</div>
                 <div id="status">Clear</div>
-                
+
                 <div class="two-column">
                     <div id="temperature">69°C</div>
-                    
+
                     <div class="misc">
                         <p>Humidity: <span id="humidity">yes</span></p>
                         <p>Wind: <span id="wind">420 kmph NW</span></p>
                     </div>
                 </div>
-                
+
                 <iframe id="map"></iframe>
-                
+
                 <p>Weather data courtesy of <a href="https://wttr.in/">wttr.in</a>.</p>
             </div>
         </div>

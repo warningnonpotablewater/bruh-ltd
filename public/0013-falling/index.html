@@ -3,12 +3,12 @@
 <html lang="en-us">
     <head>
         <title>Falling</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             :root {
                 --yellow: #ffeb3b;
@@ -22,7 +22,7 @@
                 --green: #4caf50;
                 --lime: #cddc39;
             }
-            
+
             @keyframes color-change {
                 0% {
                     background: var(--yellow);
@@ -55,7 +55,7 @@
                     background: var(--lime);
                 }
             }
-            
+
             @keyframes offset-color-change {
                 0% {
                     background: var(--orange);
@@ -90,7 +90,7 @@
                     background: var(--yellow);
                 }
             }
-            
+
             @keyframes zoom-in {
                 0% {
                     transform: scale(0);
@@ -99,7 +99,7 @@
                     transform: scale(1);
                 }
             }
-            
+
             body {
                 display: flex;
                 align-items: center;
@@ -110,7 +110,7 @@
                 margin: 0;
                 animation: infinite step-end 20s color-change;
             }
-            
+
             .slab {
                 width: 100vw;
                 height: 100vh;
@@ -120,10 +120,10 @@
                 pointer-events: none;
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
     </head>
-    
+
     <body>
         <a href="/0014-utm/" class="secret-link slab" tabindex="-1"></a>
     </body>

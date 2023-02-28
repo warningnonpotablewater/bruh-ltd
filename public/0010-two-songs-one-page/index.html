@@ -3,20 +3,20 @@
 <html lang="en-us">
     <head>
         <title>Two songs, one page</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
         <link href="/styles/consent.css" rel="stylesheet">
-        
+
         <style>
             body {
                 margin: 0;
                 font-family: sans-serif;
                 background: #000000;
             }
-            
+
             .players {
                 display: flex;
                 width: 100vw;
@@ -27,13 +27,13 @@
                     flex-direction: column;
                 }
             }
-            
+
             .players > * {
                 flex-basis: 50%;
                 flex-shrink: 0;
                 border: none;
             }
-            
+
             #player1 {
                 background: #0f0000;
             }
@@ -41,9 +41,9 @@
                 background: #00000f;
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
-        
+
         <script type="module">
             const videoIds = [
                 "o8nTCbcJ6kk",
@@ -147,46 +147,46 @@
                 "4D7u5KF7SP8",
                 "RCD344yxFAI"
             ];
-            
+
             function showSongs() {
                 function randomVideoId() {
                     return videoIds[Math.floor(Math.random() * videoIds.length)];
                 }
-                
+
                 function youtubeUrl(videoId) {
                     return `https://www.youtube.com/embed/${videoId}`;
                 }
-                
+
                 document.querySelector("#consent").remove();
-                
+
                 let videoId1 = null, videoId2 = null;
-                
+
                 do {
                     videoId1 = randomVideoId();
                     videoId2 = randomVideoId();
                 } while (videoId1 == videoId2);
-                
+
                 document.querySelector("#player1").src = youtubeUrl(videoId1);
                 document.querySelector("#player2").src = youtubeUrl(videoId2);
             }
-            
+
             document.querySelector("#show-songs").addEventListener("click", () => {
                 showSongs();
             });
         </script>
     </head>
-    
+
     <body>
         <div class="players">
             <iframe id="player1"></iframe>
             <iframe id="player2"></iframe>
         </div>
-        
+
         <div id="consent">
             <p>Please press this button:</p>
-            
+
             <button id="show-songs">Show me the songs</button>
-            
+
             <p><small>By <a href="/0011-2018/" class="secret-link" tabindex="-1">clicking</a>, you also agree to YouTube's <a href="https://policies.google.com/privacy">privacy policy</a> and <a href="https://www.youtube.com/t/terms">terms of service</a>.</small></p>
         </div>
     </body>

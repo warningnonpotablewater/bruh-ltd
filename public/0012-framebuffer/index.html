@@ -3,17 +3,17 @@
 <html lang="en-us">
     <head>
         <title>Framebuffer distortion experiment</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             :root {
                 color-scheme: light dark;
             }
-            
+
             body {
                 display: flex;
                 align-items: center;
@@ -25,137 +25,137 @@
                 font-size: 14pt;
                 font-family: "Times New Roman", serif;
             }
-            
+
             .page-wrapper {
                 display: flex;
                 flex-direction: row;
                 flex-wrap: wrap;
                 justify-content: center;
             }
-            
+
             .page-wrapper > * {
                 margin: 1em;
                 text-align: center;
             }
-            
+
             canvas {
                 max-width: 100%;
                 background: #000000;
             }
-            
+
             input {
                 max-width: 4em;
                 font-family: inherit;
                 font-size: inherit;
             }
-            
+
             .controls {
                 margin-top: 1em;
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
-        
+
         <script type="module">
             const areas = {};
-            
+
             for (const area of ["original", "distorted"]) {
                 const container = document.querySelector(`#${area}`);
-                
+
                 areas[area] = {
                     canvas: container.querySelector("canvas"),
                     width: container.querySelector(".width"),
                     height: container.querySelector(".height")
                 };
-                
+
                 areas[area].canvasContext = areas[area].canvas.getContext("2d");
             }
-            
+
             const image = new Image();
-            
+
             image.src = "test.png";
-            
+
             image.addEventListener("error", () => {
                 alert("Error: failed to load the image");
             });
-            
+
             image.addEventListener("load", () => {
                 for (const area of ["original", "distorted"]) {
                     areas[area].canvas.width = image.width;
                     areas[area].canvas.height = image.height;
-                    
+
                     areas[area].canvasContext.drawImage(image, 0, 0);
                 }
-                
+
                 areas.original.width.innerText = image.width;
                 areas.original.height.innerText = image.height;
-                
+
                 areas.distorted.width.valueAsNumber = image.width;
                 areas.distorted.height.valueAsNumber = image.height;
             });
-            
+
             function update() {
                 areas.distorted.canvas.width =
                     areas.distorted.width.valueAsNumber;
                 areas.distorted.canvas.height =
                     areas.distorted.height.valueAsNumber;
-                
+
                 const imageData = {};
-                
+
                 for (const area of ["original", "distorted"]) {
                     imageData[area] = areas[area].canvasContext.getImageData(
                         0,
                         0,
-                        
+
                         areas[area].canvas.width,
                         areas[area].canvas.height
                     );
                 }
-                
+
                 imageData.distorted.data.set(
                     imageData.original.data.subarray(
                         0, imageData.distorted.data.length
                     )
                 );
-                
+
                 areas.distorted.canvasContext.putImageData(
                     imageData.distorted,
-                    
+
                     0,
                     0
                 );
             }
-            
+
             areas.original.canvas.addEventListener("dblclick", () => {
                 location = "/0013-falling/";
             });
-            
+
             areas.distorted.width.addEventListener("change", () => {
                 update();
             });
             areas.distorted.height.addEventListener("change", () => {
                 update();
             });
-            
+
             window.page = {areas, image, update};
         </script>
     </head>
-    
+
     <body>
         <div class="page-wrapper">
             <div id="original">
                 <canvas width="0" height="0"></canvas>
-                
+
                 <div class="controls">
                     <span class="width"></span>
                     x
                     <span class="height"></span>
                 </div>
             </div>
-            
+
             <div id="distorted">
                 <canvas width="0" height="0"></canvas>
-                
+
                 <div class="controls">
                     <input type="number" class="width" min="0" value="0">
                     x

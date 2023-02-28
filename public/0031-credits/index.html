@@ -3,12 +3,12 @@
 <html lang="en-us">
     <head>
         <title>Credits</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             @font-face {
                 src:
@@ -17,7 +17,7 @@
                 font-family: "Source Code Pro";
                 font-display: swap;
             }
-            
+
             @keyframes fade-in {
                 0% {
                     opacity: 1;
@@ -37,7 +37,7 @@
                     opacity: 1;
                 }
             }
-            
+
             @keyframes background-scroll {
                 0% {
                     background-position-y: 100vh;
@@ -54,18 +54,18 @@
                     transform: translateY(-100%);
                 }
             }
-            
+
             *, *::before, *::after {
                 box-sizing: border-box;
             }
-            
+
             * {
                 margin: 0;
                 image-rendering: -moz-crisp-edges;
                 image-rendering: pixelated;
                 cursor: none;
             }
-            
+
             body {
                 display: flex;
                 flex-direction: column;
@@ -84,7 +84,7 @@
                 background-size: 20vh 20vh;
                 animation: infinite linear 30s background-scroll;
             }
-            
+
             .mask, .fade {
                 position: fixed;
                 top: 0;
@@ -92,7 +92,7 @@
                 width: 100vw;
                 min-height: 100vh;
             }
-            
+
             .mask {
                 background: radial-gradient(#0000007F, #000000FF);
                 z-index: 1;
@@ -103,7 +103,7 @@
                 animation: linear 2s fade-in;
                 z-index: 3;
             }
-            
+
             main {
                 max-width: 100%;
                 padding: 16px;
@@ -111,25 +111,25 @@
                 animation: linear 60s foreground-scroll;
                 z-index: 2;
             }
-            
+
             main * {
                 max-width: 100%;
                 overflow-wrap: break-word;
             }
-            
+
             main > *:not(first-child) {
                 max-width: min(27em, 100%);
                 margin-left: auto;
                 margin-right: auto;
             }
-            
+
             h1, h2 {
                 text-align: center;
             }
             h2, h3, ul {
                 font-size: 1em;
             }
-            
+
             h1 {
                 margin-top: 120vh;
                 margin-bottom: 20vh;
@@ -144,14 +144,14 @@
                     -2px 0 #000000;
                 transform: scaleY(1.079207);
             }
-            
+
             h2 {
                 line-height: 2;
             }
             h2, ul {
                 margin-bottom: 2.25em;
             }
-            
+
             h3, ul {
                 line-height: 2.5;
             }
@@ -159,18 +159,18 @@
                 color: #AAAAAA;
                 text-shadow: 2px 2px #2A2A2A;
             }
-            
+
             .dialog {
                 margin-bottom: 40vh;
             }
-            
+
             .teal, .green {
                 margin-bottom: 3.5em;
             }
             .dialog > *:last-child {
                 margin-bottom: 0;
             }
-            
+
             .teal {
                 color: #00AAAA;
                 text-shadow: 2px 2px #002A2A;
@@ -183,61 +183,61 @@
                 color: #FFFF55;
                 text-shadow: 2px 2px #3F3F15;
             }
-            
+
             ul {
                 list-style-type: none;
                 padding-left: 5em;
             }
-            
+
             q {
                 quotes: "\"" "\"";
             }
-            
+
             cite {
                 font-style: normal;
             }
-            
+
             .quote {
                 margin-top: 50vh;
                 margin-bottom: 20vh;
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
-        
+
         <script type="module">
             function nextPage() {
                 location = "/0032-email/";
             }
-            
+
             document.querySelector("main").addEventListener(
                 "animationend",
-                
+
                 () => {
                     const fade = document.querySelector(".fade");
-                    
+
                     fade.style.opacity = "1";
                     fade.style.animation = "linear 2s fade-out";
-                    
+
                     setTimeout(nextPage, 10000);
                 }
             )
         </script>
     </head>
-    
+
     <body>
         <div class="mask"></div>
         <div class="fade"></div>
-        
+
         <main>
             <h1>Bruh, Ltd</h1>
-            
+
             <div class="dialog">
                 <div class="teal">Thanks for watching.</div>
-                
+
                 <div class="green">Like and subscribe.</div>
             </div>
-            
+
             <h2>
                 ==============
                 <br>
@@ -245,21 +245,21 @@
                 <br>
                 ==============
             </h2>
-            
+
             <h3>Serves</h3>
-            
+
             <ul>
                 <li>4 people</li>
             </ul>
-            
+
             <h3>Time to cook</h3>
-            
+
             <ul>
                 <li>2 hours</li>
             </ul>
-            
+
             <h3>Ingredients</h3>
-            
+
             <ul>
                 <li>Water</li>
                 <li>0.5 kg pork bones</li>
@@ -270,9 +270,9 @@
                 <li>1/4 of a small cabbage</li>
                 <li>Vegetable oil</li>
             </ul>
-            
+
             <h3>Steps</h3>
-            
+
             <ul>
                 <li>Boil pork (30 min)</li>
                 <li>Purify bouillon</li>
@@ -283,7 +283,7 @@
                 <li>Add bouillon, potatoes, cabbage</li>
                 <li>Boil for 1.5 hours</li>
             </ul>
-            
+
             <div class="quote">
                 <q>Yum~ Yum~ Yum~ Yum~ Yum~ Yum~ Yum~ Yum~...</q>
                 <cite>- me :)</cite>

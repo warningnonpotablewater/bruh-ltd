@@ -3,12 +3,12 @@
 <html lang="ja-jp">
     <head>
         <title>Gunbuster clock</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             @font-face {
                 src:
@@ -17,7 +17,7 @@
                 font-family: "Comic Neue";
                 font-display: swap;
             }
-            
+
             @keyframes blinking {
                 0% {
                     background: var(--lighter);
@@ -27,14 +27,14 @@
                     pointer-events: none;
                 }
             }
-            
+
             :root {
                 --space: #161616;
                 --hologram: #c0c0c0;
                 --lighter: #d7d7d7;
                 --darker: #7f7f7f;
             }
-            
+
             body {
                 display: flex;
                 justify-content: center;
@@ -47,17 +47,17 @@
                 color: var(--space);
                 background: var(--space);
             }
-            
+
             .clock {
                 display: flex;
                 flex-shrink: 0;
                 align-items: center;
             }
-            
+
             .era, .date {
                 background: var(--hologram);
             }
-            
+
             .era {
                 position: relative;
                 left: 6vw;
@@ -67,31 +67,31 @@
                 font-size: 2.4vw;
                 z-index: 0;
             }
-            
+
             #ad {
                 position: relative;
                 top: 2vw;
                 left: 2.5vw;
             }
-            
+
             .date {
                 padding-right: 6.5vw;
                 font-size: 3vw;
                 z-index: 1;
             }
-            
+
             .date > * {
                 padding: 0.75vw 1.5vw;
             }
             .date > *:first-child {
                 border-bottom: solid 1vw var(--space);
             }
-            
+
             #year, #month, #day {
                 letter-spacing: 0.5vw;
                 font-size: 6vw;
             }
-            
+
             .blinker {
                 position: relative;
                 top: 1vw;
@@ -104,7 +104,7 @@
                 box-shadow: -0.1vw 0.1vw 0 var(--space);
                 animation: step-start infinite 1s blinking;
             }
-            
+
             .time {
                 position: relative;
                 left: -6.0vw;
@@ -122,7 +122,7 @@
                 );
                 z-index: 2;
             }
-            
+
             .hand {
                 position: absolute;
                 left: 7.75vw;
@@ -131,7 +131,7 @@
                 height: 17vw;
                 transition: transform 0.1s;
             }
-            
+
             #hours {
                 background: linear-gradient(to top,
                     transparent,
@@ -151,40 +151,40 @@
                 );
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
-        
+
         <script type="module">
             function updateTime() {
                 const
                     now = new Date(),
-                    
+
                     year = document.querySelector("#year"),
                     month = document.querySelector("#month"),
                     day = document.querySelector("#day"),
-                    
+
                     dayOfTheWeek = document.querySelector("#day-of-the-week"),
-                    
+
                     hours = document.querySelector("#hours"),
                     minutes = document.querySelector("#minutes");
-                
+
                 year.innerText = now.getFullYear();
                 month.innerText = now.getMonth() + 1;
                 day.innerText = String(now.getDate()).padStart(2, "0");
-                
+
                 dayOfTheWeek.innerText = [
                     "月", "火", "水", "木", "金", "土", "日"
                 ][now.getDay()];
-                
+
                 hours.style.transform = `rotate(${now.getHours() * 15}deg)`;
                 minutes.style.transform = `rotate(${now.getMinutes() * 6}deg)`;
             }
-            
+
             updateTime();
             setInterval(updateTime, 5000)
         </script>
     </head>
-    
+
     <body>
         <div class="clock">
             <div class="era">
@@ -197,7 +197,7 @@
                 <div>
                     <span id="month">0</span>月
                     <span id="day">00</span>日(<span id="day-of-the-week">日</span>)
-                    
+
                     <a href="/0007-amogus/" class="secret-link" tabindex="-1"><span class="blinker"></span></a>
                 </div>
             </div>

@@ -3,14 +3,14 @@
 <html lang="en-ke">
     <head>
         <title>Baako Kwadwo's personal clinic</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="ian-mcdiarmid.jpg" rel="icon">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             @font-face {
                 src:
@@ -19,7 +19,7 @@
                 font-family: "Source Sans Pro";
                 font-display: swap;
             }
-            
+
             body {
                 width: 100%;
                 min-height: 100vh;
@@ -30,7 +30,7 @@
                 color: #ffcc93;
                 background: #000000;
             }
-            
+
             .page-wrapper {
                 display: grid;
                 grid-template-columns: 256px 1fr;
@@ -41,20 +41,20 @@
                 max-width: 1024px;
                 margin: 0 auto;
             }
-            
+
             header {
                 display: flex;
                 align-items: center;
                 grid-area: header;
             }
-            
+
             .logo {
                 flex-shrink: 0;
                 width: 110px;
                 height: 100px;
                 margin-right: 16px;
             }
-            
+
             h1 {
                 font-weight: normal;
             }
@@ -62,12 +62,12 @@
                 margin-top: 0;
                 font-size: 3em;
             }
-            
+
             aside {
                 grid-area: aside;
                 text-align: center;
             }
-            
+
             .links > a {
                 display: block;
                 padding: 13px 0;
@@ -83,19 +83,19 @@
                 width: 320px;
                 padding-right: 64px;
             }
-            
+
             .links > a:not(.selected):hover {
                 border-top-color: #f3bca3;
                 border-bottom-color: #dc8f88;
                 background: #d9a891;
             }
-            
+
             .links > a.selected {
                 border-top-color: #b0261b;
                 border-bottom-color: #84190f;
                 background: #9a2015;
             }
-            
+
             main {
                 grid-area: main;
                 padding: 32px;
@@ -103,48 +103,48 @@
                 border-top-left-radius: 64px;
                 background: radial-gradient(
                     circle at right bottom,
-                    
+
                     #ffcc93,
                     #755b40
                 );
             }
-            
+
             main img {
                 max-width: 100%;
             }
-            
+
             .candle {
                 float: right;
                 width: 42px;
             }
-            
+
             @media (max-width: 1023px) {
                 .page-wrapper {
                     display: block;
                 }
-                
+
                 .links > a:first-child {
                     width: auto;
                     padding-right: 13px;
                 }
-                
+
                 main {
                     border-radius: 0;
                 }
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
     </head>
-    
+
     <body>
         <div class="page-wrapper">
             <header>
                 <img src="ian-mcdiarmid.jpg" class="logo" alt="Baako's portrait">
-                
+
                 <h1 class="page-title">Baako Kwadwo's personal clinic</h1>
             </header>
-            
+
             <aside>
                 <nav class="links">
                     <a href="#" class="selected">Home</a>
@@ -154,17 +154,17 @@
                     <a href="#">Contact</a>
                     <a href="#">About</a>
                 </nav>
-                
+
                 <p>© 2018 Kenyan Government and Slapper UK</p>
             </aside>
-            
+
             <main>
                 <h1>Home</h1>
-                
+
                 <p><img src="village.jpg" alt="Poor african village"></p>
-                
+
                 <img src="candle.gif" class="candle" alt="Candle">
-                
+
                 <p>The contents of this page have nothing to do Ian McDiarmid, the Kenyan Government, or anything else mentioned and are just a representation of a clusterfuck of a website I've seen in a dream.</p>
             </main>
         </div>

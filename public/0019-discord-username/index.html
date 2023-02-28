@@ -3,12 +3,12 @@
 <html lang="en-us">
     <head>
         <title>Discord username</title>
-        
+
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
         <link href="/styles/common.css" rel="stylesheet">
-        
+
         <style>
             @font-face {
                 src:
@@ -17,15 +17,15 @@
                 font-family: "Source Sans Pro";
                 font-display: swap;
             }
-            
+
             ::selection {
                 background: #7289da;
             }
-            
+
             *, *::before, *::after {
                 box-sizing: border-box;
             }
-            
+
             body {
                 display: flex;
                 justify-content: center;
@@ -40,7 +40,7 @@
                 color: #ffffff;
                 background: #26262b;
             }
-            
+
             .page-wrapper {
                 padding: 32px;
                 border-radius: 5px;
@@ -48,34 +48,34 @@
                 box-shadow: 0 2px 10px 0 #00000033;
             }
         </style>
-        
+
         <script src="/scripts/licensing.js" type="module"></script>
-        
+
         <script type="module">
             const searchParams = new URLSearchParams(location.search);
-            
+
             let username = searchParams.get("username");
-            
+
             if (!username) {
                 username = prompt("Enter your Discord username");
-                
+
                 if (username) {
                     searchParams.set("username", username);
-                    
+
                     history.pushState({}, "", `?${searchParams.toString()}`);
                 }
             }
-            
+
             const pageWrapper = document.querySelector(".page-wrapper");
-            
+
             if (username) {
                 pageWrapper.innerText = username;
             }
-            
+
             pageWrapper.hidden = false;
         </script>
     </head>
-    
+
     <body>
         <div class="page-wrapper" hidden>
             jo<a href="/0020-txt-viewer/" class="secret-link" tabindex="-1">h</a>n#0001
