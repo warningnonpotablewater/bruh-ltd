@@ -1,3 +1,5 @@
+// Yes, this filename is confusing, but it has to be this way. Trust me.
+
 import {Ring as Bruh} from "../libwebring/main.js";
 
 async function main() {
@@ -21,7 +23,7 @@ function getHint() {
 
 main();
 
-// Stuff for compatibility with libwebring 1.0
+// Stuff for compatibility with libwebring 1.0.
 
 export class Ring {
     constructor() {}
