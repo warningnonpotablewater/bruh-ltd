@@ -1,6 +1,7 @@
-// Yes, this filename is confusing, but it has to be this way. Trust me.
+// Yes, this filename and location are confusing, but it has to be this way.
+// Trust me.
 
-import {Ring as Bruh} from "../libwebring/main.js";
+import {Ring as Bruh} from "../0000-ring/libwebring/main.js";
 
 async function main() {
     const hint = getHint();
