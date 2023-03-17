@@ -50,7 +50,15 @@
                 line-height: 1;
             }
 
-            @media all and (min-width: 800px) {
+            a {
+                color: #ad1429;
+            }
+
+            a:hover {
+                text-decoration: none;
+            }
+
+            @media screen and (min-width: 800px), print {
                 h2 {
                     margin-bottom: -1.6em;
                 }
@@ -69,12 +77,11 @@
                 }
             }
 
-            a {
-                color: #ad1429;
-            }
-
-            a:hover {
-                text-decoration: none;
+            @media print {
+                a {
+                    color: inherit;
+                    text-decoration: inherit;
+                }
             }
         </style>
 
@@ -120,7 +127,7 @@
                 <li>
                     <span class="caption">GitLab:</span>
                     <a href="https://gitlab.com/warningnonpotablewater/">
-                        gitlab.com/warningnonpotablewater/
+                        gitlab.com/warningnonpotablewater
                     </a>
                 </li>
             </ul>
