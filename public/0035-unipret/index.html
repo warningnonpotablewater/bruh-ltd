@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+    <head>
+        <title>Unipret</title>
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <meta name="color-scheme" content="light dark">
+
+        <link href="/styles/common.css" rel="stylesheet">
+
+        <style>
+            body {
+                max-width: 30em;
+                padding: 1em;
+                margin: 0 auto;
+            }
+
+            textarea {
+                width: 100%;
+            }
+        </style>
+
+        <script src="/scripts/licensing.js" type="module"></script>
+
+        <script type="module">
+            const element = id => document.querySelector(`#${id}`);
+
+            const input = element("input");
+            const offset = element("offset");
+            const output = element("output");
+
+            let amount = 8;
+
+            offset.addEventListener("change", setOffset);
+            input.addEventListener("input", update);
+
+            function setOffset() {
+                if (!offset.validity.valid) {
+                    offset.value = 8;
+
+                    return;
+                }
+
+                amount = offset.value;
+
+                update();
+            }
+
+            function update() {
+                if (input.value?.startsWith("Dear grandma,\n")) {
+                    location = "/9999-nine-nine-nine-nine/";
+                }
+
+                output.value = shift(input.value, amount);
+            }
+
+            function shift(string, offset) {
+                const toShifted = chr => {
+                    let charCode = chr.charCodeAt(0);
+
+                    if (offset > 0) {
+                        charCode <<= offset;
+                    } else {
+                        charCode >>= -offset;
+                    }
+
+                    return String.fromCharCode(charCode);
+                };
+
+                return string.split("").map(toShifted).join("");
+            }
+        </script>
+    </head>
+
+    <body>
+        <textarea id="input" rows="5" autocomplete="off"></textarea>
+
+        <p>🐻 <input type="number" min="-16" max="16" value="8" id="offset"></p>
+
+        <textarea id="output" rows="6" autocomplete="off" readonly></textarea>
+    </body>
+</html>
