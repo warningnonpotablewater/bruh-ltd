@@ -11,3 +11,7 @@ hugo
 ```
 hugo server
 ```
+
+## License
+
+[Here](content/licensing/_index.md).
