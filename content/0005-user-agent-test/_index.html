@@ -1,0 +1,82 @@
+---
+title: "User agent test"
+---
+
+<style>
+    :root {
+        color-scheme: light dark;
+    }
+
+    * {
+        image-rendering: -moz-crisp-edges;
+        image-rendering: pixelated;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        font-size: 20pt;
+        color: #000000;
+        background: #ffffff url("light-grid.png");
+    }
+
+    @media (prefers-color-scheme: dark) {
+        body {
+            color: #ffffff;
+            background: #000000 url("dark-grid.png");
+        }
+    }
+
+    .page-wrapper {
+        overflow-x: scroll;
+        min-width: 0;
+        max-width: 24em;
+        margin: 16px;
+    }
+
+    .filler {
+        width: 200%;
+        height: 1px;
+    }
+</style>
+
+<div class="page-wrapper">
+    <noscript>JavaScript disabled</noscript>
+
+    <p><script>
+        document.write(navigator.userAgent);
+    </script></p>
+
+    <p><script>
+        document.write(
+            window.innerWidth + "x" +
+            window.innerHeight + ", "
+        );
+
+        document.write(navigator.language);
+    </script></p>
+
+    <p>
+        default,
+        <font face="sans-serif">sans-serif</font>,
+        <font face="serif">serif</font>
+    </p>
+
+    <p>
+        {{% secret-link "/0006-gunbuster-clock/" %}}
+            <button>Button</button>
+        {{% /secret-link %}}
+        <input type="radio" checked>
+        <input type="checkbox" checked>
+        <input type="text" value="Text field">
+        <input type="date" value="2020-02-29">
+    </p>
+
+    <div class="filler"></div>
+</div>

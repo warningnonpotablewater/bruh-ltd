@@ -1,0 +1,51 @@
+---
+title: "Random gradient"
+---
+
+<style>
+    body {
+        width: 100vw;
+        height: 100vh;
+        padding: 0;
+        margin: 0;
+        background: #000000;
+    }
+
+    .page-wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+    }
+
+    .secret-link {
+        display: block;
+        width: 5vw;
+        height: 200vmax;
+    }
+</style>
+
+<script type="module">
+    function randomColor() {
+        const color = Math.floor(Math.random() * 2 ** 24);
+
+        return `#${("000000" + color.toString(16)).slice(-6)}`;
+    }
+
+    const angle = Math.random() * 360;
+
+    document.body.style.background = `linear-gradient(
+        ${angle}deg,
+        ${randomColor()},
+        ${randomColor()}
+    )`;
+
+    document.querySelector(".secret-link").style.transform =
+        `rotate(${angle + 90}deg)`;
+</script>
+
+<div class="page-wrapper">
+    {{% secret-link "/0010-two-songs-one-page/" %}}{{% /secret-link %}}
+</div>

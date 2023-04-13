@@ -1,0 +1,215 @@
+---
+title: "About Bruh, Ltd"
+---
+
+<style>
+    * {
+        scroll-behavior: smooth;
+        user-select: none;
+    }
+
+    body {
+        width: 100%;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+        font-size: 20pt;
+        font-family: sans-serif;
+        line-height: 1.5;
+    }
+
+    @media print {
+        * {
+            display: none;
+        }
+    }
+
+    header, section {
+        padding: 1em;
+        color: #ffffff;
+    }
+
+    header {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    header > h1 {
+        margin: 0;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #000000;
+        background-attachment: fixed;
+        background-size: 100vw 100vh;
+    }
+
+    section > h2 {
+        text-align: center;
+    }
+
+    section > p {
+        max-width: 40em;
+    }
+
+    #about {
+        background-image:
+            linear-gradient(to top, #000000a0, #000000a0),
+            url("1.jpg");
+    }
+    #point-1 {
+        background-image:
+            linear-gradient(to top, #000000a0, #000000a0),
+            url("2.jpg");
+    }
+    #point-2 {
+        background-image:
+            linear-gradient(to top, #000000a0, #000000a0),
+            url("3.jpg");
+    }
+    #point-3 {
+        background-image:
+            linear-gradient(to top, #000000a0, #000000a0),
+            url("4.jpg");
+    }
+    #point-4 {
+        background-image:
+            linear-gradient(to top, #000000a0, #000000a0),
+            url("5.jpg");
+    }
+    #contact {
+        background-image:
+            linear-gradient(to top, #000000a0, #000000a0),
+            url("6.jpg");
+    }
+
+    .logo {
+        width: 64px;
+        vertical-align: -8px;
+    }
+
+    .button {
+        padding: 1em 2em;
+        font-size: inherit;
+        border: solid 2px #ffffff;
+        border-radius: 1em;
+        text-decoration: none;
+        color: #ffffff;
+        background: transparent;
+        transition: color 0.1s, background 0.1s;
+    }
+
+    .button:hover {
+        background: #ffffff;
+        color: #000000;
+    }
+</style>
+
+<header>
+    <h1>
+        <img src="/images/icon.png" class="logo" alt="Bear">
+        Bruh, Ltd
+    </h1>
+</header>
+
+<section id="about">
+    <h2>The only premium class portable toilet company in the world</h2>
+
+    <a href="#point-1" class="button">Learn more</a>
+</section>
+
+<section id="point-1">
+    <h2>Toilets you can trust your ass with</h2>
+
+    <p>Our company has been proven to produce the best toilets available in the
+    world. We can assure you than our toilets will outlive not only ones by our
+    competitiors but also the competitors themselves.</p>
+</section>
+
+<section id="point-2">
+    <h2>You'll poop like for the last time</h2>
+
+    <p>By using our toilets, you're proving your status as a prosperous person
+    by providing incredible comfort to your ass. The feeling your buttocks will
+    get after using a Bruh, Ltd toilet can't be matched by anything else.</p>
+</section>
+
+<section id="point-3">
+    <h2>We've seen some shit</h2>
+
+    <p>Our specialists are willing to provide you any kind of toilet service as
+    long as you're paying money. Your deep fantasies involving your ass you've
+    always had but could never implement will finally see the light of day.</p>
+</section>
+
+<section id="point-4">
+    <h2>Even your grandma poops with us</h2>
+
+    <p>Our company has been on the market for more than 69 years without a
+    single lethal case. We've been taking your grandma's shit, so you can be
+    sure we can take yours too.</p>
+</section>
+
+<section id="contact">
+    <h2>Interested?</h2>
+
+    <a href="/0002-baako/" class="button">Contact us</a>
+</section>
+
+<script>
+    const painLevel = 800 + Math.random() * 2400;
+
+    for (let i = 0; i < painLevel; i++) {
+        document.write("<div>");
+    }
+    for (let i = 0; i < painLevel; i++) {
+        document.write("</div>");
+    }
+</script>
+
+<script>
+    let alreadyDead = false;
+
+    function die(message) {
+        if (alreadyDead) {
+            return;
+        }
+
+        document.body.innerHTML = "";
+
+        alert(message);
+
+        document.body.innerHTML = "<a href=\"/0002-baako/\">Next page</a>";
+
+        alreadyDead = true;
+    }
+
+    for (const inconvenience of [
+        [
+            "(hover: none) and (orientation: landscape)",
+            "Sorry, landscape orientation is not supported"
+        ],
+        [
+            "(hover: hover) and (orientation: portrait)",
+            "Sorry, portrait orientation is not supported"
+        ],
+        [
+            "(hover: hover) and (max-width: 800px)",
+            "Sorry, low resolution devices are not supported"
+        ]
+    ]) {
+        if (window.matchMedia(inconvenience[0]).matches) {
+            die(inconvenience[1]);
+        }
+    }
+
+    if (/(Mac|iPhone|iPod|iPad)/i.test(navigator.userAgent)) {
+        die("Sorry, Apple devices are not supported");
+    }
+</script>

@@ -1,0 +1,199 @@
+---
+title: "Gunbuster clock"
+---
+
+<style>
+    @font-face {
+        src:
+            local("Comic Neue"),
+            url("/fonts/comic-neue.woff2");
+        font-family: "Comic Neue";
+        font-display: swap;
+    }
+
+    @keyframes blinking {
+        0% {
+            background: var(--lighter);
+        }
+        50% {
+            background: var(--space);
+            pointer-events: none;
+        }
+    }
+
+    :root {
+        --space: #161616;
+        --hologram: #c0c0c0;
+        --lighter: #d7d7d7;
+        --darker: #7f7f7f;
+    }
+
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+        font-family: "Comic Neue", "Comic Sans MS", sans-serif;
+        color: var(--space);
+        background: var(--space);
+    }
+
+    .clock {
+        display: flex;
+        flex-shrink: 0;
+        align-items: center;
+    }
+
+    .era, .date {
+        background: var(--hologram);
+    }
+
+    .era {
+        position: relative;
+        left: 6vw;
+        width: 12vw;
+        height: 12vw;
+        border-radius: 50%;
+        font-size: 2.4vw;
+        z-index: 0;
+    }
+
+    #ad {
+        position: relative;
+        top: 2vw;
+        left: 2.5vw;
+    }
+
+    .date {
+        padding-right: 6.5vw;
+        font-size: 3vw;
+        z-index: 1;
+    }
+
+    .date > * {
+        padding: 0.75vw 1.5vw;
+    }
+    .date > *:first-child {
+        border-bottom: solid 1vw var(--space);
+    }
+
+    #year, #month, #day {
+        letter-spacing: 0.5vw;
+        font-size: 6vw;
+    }
+
+    .blinker {
+        position: relative;
+        top: 1vw;
+        display: inline-block;
+        width: 1.25vw;
+        height: 1.25vw;
+        margin-right: -1.25vw;
+        border-radius: 50%;
+        background: var(--lighter);
+        box-shadow: -0.1vw 0.1vw 0 var(--space);
+        animation: step-start infinite 1s blinking;
+    }
+
+    .time {
+        position: relative;
+        left: -6.0vw;
+        width: 17vw;
+        height: 17vw;
+        border: solid 0.4em var(--space);
+        border-radius: 50%;
+        background: radial-gradient(
+            var(--space) 5.5vw,
+            var(--darker) 5.5vw,
+            var(--darker) 5.75vw,
+            var(--space) 5.75vw,
+            var(--space) 6vw,
+            var(--hologram) 6vw
+        );
+        z-index: 2;
+    }
+
+    .hand {
+        position: absolute;
+        left: 7.75vw;
+        top: 0;
+        width: 0.5vw;
+        height: 17vw;
+        transition: transform 0.1s;
+    }
+
+    #hours {
+        background: linear-gradient(to top,
+            transparent,
+            transparent 55%,
+            var(--hologram) 55%,
+            var(--hologram) 12.5vw,
+            transparent 12.5vw
+        );
+    }
+    #minutes {
+        background: linear-gradient(to top,
+            transparent,
+            transparent 55%,
+            var(--hologram) 55%,
+            var(--hologram) 13.25vw,
+            transparent 13.25vw
+        );
+    }
+</style>
+
+<script type="module">
+    function updateTime() {
+        const
+            now = new Date(),
+
+            year = document.querySelector("#year"),
+            month = document.querySelector("#month"),
+            day = document.querySelector("#day"),
+
+            dayOfTheWeek = document.querySelector("#day-of-the-week"),
+
+            hours = document.querySelector("#hours"),
+            minutes = document.querySelector("#minutes");
+
+        year.innerText = now.getFullYear();
+        month.innerText = now.getMonth() + 1;
+        day.innerText = String(now.getDate()).padStart(2, "0");
+
+        dayOfTheWeek.innerText = [
+            "月", "火", "水", "木", "金", "土", "日"
+        ][now.getDay()];
+
+        hours.style.transform = `rotate(${now.getHours() * 15}deg)`;
+        minutes.style.transform = `rotate(${now.getMinutes() * 6}deg)`;
+    }
+
+    updateTime();
+    setInterval(updateTime, 5000)
+</script>
+
+<div class="clock">
+    <div class="era">
+        <span id="ad">AD:</span>
+    </div>
+    <div class="date">
+        <div>
+            <span id="year">0000</span>年
+        </div>
+        <div>
+            <span id="month">0</span>月
+            <span id="day">00</span>日(<span id="day-of-the-week">日</span>)
+
+            {{% secret-link "/0007-amogus/" %}}
+                <span class="blinker"></span>
+            {{% /secret-link %}}
+        </div>
+    </div>
+    <div class="time">
+        <div class="hand" id="hours"></div>
+        <div class="hand" id="minutes"></div>
+    </div>
+</div>
