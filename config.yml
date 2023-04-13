@@ -1,0 +1,17 @@
+baseURL: "https://bruh.ltd/"
+languageCode: "en-us"
+
+disableKinds: ["taxonomy", "term", "sitemap", "RSS"]
+
+markup:
+  goldmark:
+    renderer:
+      unsafe: true
+
+minify:
+  minifyOutput: true
+
+  tdewolff:
+    html:
+      keepComments: true
+      keepQuotes: true

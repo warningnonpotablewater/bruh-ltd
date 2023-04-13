@@ -1,1 +1,13 @@
-Bruh, Ltd is a company that sells portable toilets. Or is it?
+Even I can't explain what this project is.
+
+## How to build
+
+```
+hugo
+```
+
+## How to debug
+
+```
+hugo server
+```

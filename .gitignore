@@ -1,1 +1,4 @@
-/*.zip
+*.lock
+*.zip
+/public
+/resources/_gen/
