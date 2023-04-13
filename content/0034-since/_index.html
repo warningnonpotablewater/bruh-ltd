@@ -1,0 +1,105 @@
+---
+title: "Since"
+---
+
+<style>
+    :root {
+        color-scheme: light dark;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+        font-size: 14pt;
+        font-family: sans-serif;
+    }
+
+    main {
+        min-width: 0;
+        padding: 1em;
+    }
+
+    main > *:first-child {
+        margin-top: 0;
+    }
+    main > *:last-child {
+        margin-bottom: 0;
+    }
+</style>
+
+<script type="module">
+    const getElement = id => [id, document.querySelector(`#${id}`)];
+
+    const ids = ["today", "start", "days", "qw", "ytm", "day"];
+    const elements = Object.fromEntries(ids.map(getElement));
+
+    function initialize() {
+        const today = new Date();
+
+        elements.today.valueAsDate = today;
+        elements.start.value = "2000-01-01";
+    }
+
+    function update() {
+        if (elements.today.value == "1970-01-01") {
+            location = "/0035-unipret/";
+        }
+
+        const timestamp = element => element.valueAsDate?.getTime();
+
+        const today = timestamp(elements.today);
+        const start = timestamp(elements.start);
+
+        const millisecondsPerDay = 86400000;
+
+        const delta = today - start;
+
+        const days = delta / millisecondsPerDay;
+        const qw = days / 28;
+        const ytm = qw / 13;
+
+        setText(elements.days, days);
+        setText(elements.qw, qw);
+        setText(elements.ytm, ytm);
+        setText(elements.day, days + 1);
+    }
+
+    function setText(element, value) {
+        const rounded = value.toFixed(3);
+        const truncated = rounded.replace(/\.000/g, "");
+
+        element.innerText = truncated;
+    }
+
+    const attachUpdate = element => element.addEventListener(
+        "input", update
+    );
+
+    attachUpdate(elements.today);
+    attachUpdate(elements.start);
+
+    initialize();
+    update();
+</script>
+
+<main>
+    <p><label>
+        Today: <input id="today" type="date" autocomplete="off">
+    </label></p>
+
+    <p><label>
+        Start: <input id="start" type="date" autocomplete="off">
+    </label></p>
+
+    <p>
+        It's been <span id="days">0</span> days<br>
+        = <span id="qw">0</span> quadroweeks<br>
+        = <span id="ytm">0</span> year™s<br>
+        Today is day <span id="day">0</span>
+    </p>
+</main>
