@@ -1,0 +1,45 @@
+---
+title: "The Last Page of Bruh, Ltd"
+---
+
+<style>
+    :root {
+        color-scheme: light dark;
+    }
+
+    body {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        min-height: 100vh;
+        padding: 0;
+        margin: 0;
+        text-align: center;
+        font-size: 14pt;
+        font-family: "Times New Roman", serif;
+    }
+
+    .page-wrapper {
+        min-width: 0;
+        padding: 1em 2em;
+    }
+
+    .page-wrapper > *:first-child {
+        margin-top: 0;
+    }
+    .page-wrapper > *:last-child {
+        margin-bottom: 0;
+    }
+</style>
+
+<div class="page-wrapper">
+    <h1>Attention</h1>
+
+    <p>You have reached the very {{% secret-link "/" %}}last{{% /secret-link %}}
+    page of this website.</p>
+
+    <p>We hope you have enjoyed your browsing.</p>
+
+    <p>Come back later when there are more pages.</p>
+</div>
