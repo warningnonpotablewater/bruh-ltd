@@ -1,0 +1,76 @@
+---
+title: "2018"
+---
+
+<style>
+    @keyframes sin {
+        0% {
+            background-position: 0% 0%;
+        }
+        100% {
+            background-position: 0% 100vh;
+        }
+    }
+
+    @keyframes different-sin {
+        0% {
+            left: calc(0px - var(--size));
+        }
+        100% {
+            left: calc(100vw);
+        }
+    }
+
+    :root {
+        --size: 50vmin;
+    }
+
+    body {
+        width: 100vw;
+        height: 100vh;
+        margin: 0;
+        font-size: 12pt;
+        background: linear-gradient(-45deg, #004558, #7f716b);
+        background-size: 10vh 10vh;
+        animation: 10s infinite linear sin;
+    }
+
+    .page-wrapper {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+    }
+
+    .person {
+        position: relative;
+        top: calc(50vh - var(--size) / 2);
+        width: var(--size);
+        height : var(--size);
+        background: linear-gradient(25deg, #29282b, #bb8e74);
+        animation: 10s infinite linear different-sin;
+    }
+
+    #game {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: none;
+        width: 100%;
+        cursor: default;
+        text-align: center;
+        text-decoration: none;
+        color: #005845;
+    }
+
+    #game:target {
+        display: block;
+    }
+</style>
+
+<div class="page-wrapper">
+    <a href="#game" class="secret-link" tabindex="-1">
+        <div class="person"></div>
+    </a>
+
+    <a href="/0012-framebuffer/" id="game">2018</a>
+</div>

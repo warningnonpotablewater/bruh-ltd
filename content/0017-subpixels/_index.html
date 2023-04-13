@@ -1,0 +1,36 @@
+---
+title: "Subpixels"
+---
+
+<link href="/styles/consent.css" rel="stylesheet">
+
+<style>
+    @keyframes background-scroll {
+        0% {
+            background-position-x: 0;
+        }
+        100% {
+            background-position-x: 60px;
+        }
+    }
+
+    body {
+        margin: 0;
+        font-family: sans-serif;
+        background: url("rgb.png");
+        animation: infinite linear 1s background-scroll;
+    }
+</style>
+
+<script type="module">
+    document.querySelector("#button").addEventListener("click", () => {
+        document.querySelector("#consent").remove();
+    })
+</script>
+
+<div id="consent">
+    <p>Please {{% secret-link "/0018-pedometer/" %}}press{{% /secret-link %}}
+    this button:</p>
+
+    <button id="button">I'm not prone to seizures</button>
+</div>
