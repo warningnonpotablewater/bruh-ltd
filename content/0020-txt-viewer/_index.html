@@ -1,0 +1,136 @@
+---
+title: "Text file viewer"
+---
+
+<style>
+    @font-face {
+        src:
+            local("Courier Prime"),
+            url("/fonts/courier-prime.woff2");
+        font-family: "Courier Prime";
+        font-display: swap;
+    }
+
+    @keyframes emergence {
+        0% {
+            height: 0px;
+            overflow: hidden;
+        }
+        100% {
+            height: calc(100vh - 48px);
+            overflow: hidden;
+        }
+    }
+
+    :root {
+        --background-color: #000000;
+        --foreground-color: #00ff00;
+    }
+
+    ::selection {
+        color: var(--background-color);
+        background: var(--foreground-color);
+    }
+
+    body {
+        width: 100%;
+        min-height: 100vh;
+        padding: 16px;
+        padding-bottom: 32px;
+        margin: 0;
+        font-size: 12pt;
+        color: var(--foreground-color);
+        background: var(--background-color);
+        scrollbar-width: none;
+    }
+
+    ::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+    }
+
+    .visible-scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: var(--foreground-color) var(--background-color);
+    }
+
+    #content {
+        max-width: 70ch;
+        margin: 0 auto;
+        font-family: "Courier Prime", monospace;
+    }
+    #content.pre {
+        white-space: pre-wrap;
+        overflow-wrap: break-word;
+        tab-size: 4;
+    }
+
+    .fake-link {
+        cursor: pointer;
+        text-decoration: underline;
+    }
+
+    .filler {
+        height: 100vh;
+    }
+</style>
+
+<script type="module">
+    const searchParams = new URLSearchParams(location.search);
+
+    let filename = searchParams.get("file");
+
+    if (!filename) {
+        filename = prompt("Enter the URL of the file to view");
+
+        if (filename) {
+            searchParams.set("file", filename);
+
+            history.pushState({}, "", `?${searchParams.toString()}`);
+        }
+    }
+
+    const content = document.querySelector("#content");
+
+    if (filename) {
+        document.documentElement.className = "visible-scrollbar";
+
+        document.title =
+            filename.split('/').reverse()[0] +
+            " | " +
+            document.title;
+
+        content.innerText = "Loading...";
+
+        content.className = "pre";
+
+        fetch(filename)
+            .then((response) => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error("can't fetch the file");
+                }
+            })
+            .then((text) => {
+                content.innerText = text;
+
+                content.style.animation = "linear 0.5s emergence";
+            })
+
+            .catch((error) => {
+                alert(error);
+            });
+    }
+
+    content.hidden = false;
+</script>
+
+<div id="content" hidden>
+    Click <span class="fake-link">here</span>
+
+    <div class="filler"></div>
+
+    Just kidding, {{% secret-link "/0021-nerf/" %}}click{{% /secret-link %}}
+    <span class="fake-link">here</span>
+</pre>
