@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html lang="{{ $.Site.LanguageCode | default "en" }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        {{ with .Title }}
+            <title>{{ . }}</title>
+            <meta property="og:title" content="{{ . }}">
+        {{ end }}
+
+        {{ with .Description }}
+            <meta name="description" content="{{ . }}">
+            <meta name="og:description" content="{{ . }}">
+        {{ end }}
+
+        {{ with "/images/icon.png" }}
+            <link href="{{ . }}" rel="icon">
+            <meta property="og:image" content="{{ . }}">
+        {{ end }}
+
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="{{ .Permalink }}">
+
+        <meta name="theme-color" content="#000066">
+
+        <link href="/styles/common.css" rel="stylesheet">
+    </head>
+
+    <body>
+        {{ .Content }}
+
+        <div class="licensing">© 2022 Bruh, Ltd. <a href="/licensing/">Learn
+        more.</div>
+    </body>
+</html>
