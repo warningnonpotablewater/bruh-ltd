@@ -8,35 +8,35 @@ title: "Oklab"
     }
 
     canvas {
+        position: relative;
         max-width: 100%;
         max-height: 100vh;
+    }
+
+    canvas.loading {
+        opacity: 0.5;
     }
 </style>
 
 <script type="module">
-    import {srgbToOklab, oklabToSrgb} from "./oklab.js";
-    import * as transforms from "./transforms.js";
-
     const element = id => document.querySelector(`#${id}`);
 
     const picker = element("picker");
     const channel = element("channel");
-    const nextPage = element("next-page");
 
     const canvas = element("canvas");
     const context = canvas.getContext("2d");
 
+    const loading = element("loading");
+    const nextPage = element("next-page");
+
+    const worker = new Worker("worker.js");
+
     let image;
 
-    picker.addEventListener("change", async () => {
-        try {
-            await pickFile();
-        } catch (error) {
-            console.log(error);
-            alert("Something really bad happened. Pretend you know what.");
-        }
-    });
-    channel.addEventListener("change", redraw);
+    picker.addEventListener("change", pickFile);
+    channel.addEventListener("change", setChannel);
+    worker.addEventListener("message", draw);
 
     async function pickFile() {
         const file = picker.files[0];
@@ -53,13 +53,15 @@ title: "Oklab"
             nextPage.hidden = false;
         }
 
-        redraw();
+        setChannel();
     }
 
-    function redraw() {
+    function setChannel() {
         if (!image) {
             return;
         }
+
+        startLoading();
 
         context.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -68,43 +70,41 @@ title: "Oklab"
 
         context.drawImage(image, 0, 0);
 
-        process();
-    }
-
-    function process() {
-        const transform = transforms[channel.value];
-
-        const oldImage = context.getImageData(
+        const imageData = context.getImageData(
             0, 0, image.width, image.height,
             {colorSpace: "srgb"}
         );
 
-        const data = oldImage.data;
-
-        const PIXEL_SIZE = 4;
-        const RGB_SIZE = 3;
-
-        for (let i = 0; i < data.length; i += PIXEL_SIZE) {
-            const rgb = data.slice(i, i + RGB_SIZE);
-
-            const processed = desaturate(rgb, transform);
-
-            data.set(processed, i);
-        }
-
-        const newImage = new ImageData(data, image.width, image.height);
-
-        context.putImageData(newImage, 0, 0);
+        worker.postMessage({
+            buffer: imageData.data.buffer,
+            channel: channel.value
+        });
     }
 
-    function desaturate(pixel, transform) {
-        const oklab = srgbToOklab(pixel);
+    function draw(event) {
+        const data = new Uint8ClampedArray(event.data);
+        const imageData = new ImageData(data, image.width, image.height);
 
-        const desaturated = transform(oklab);
+        context.putImageData(imageData, 0, 0);
 
-        const rgb = oklabToSrgb(desaturated);
+        stopLoading();
+    }
 
-        return rgb;
+    function startLoading() {
+        loading.hidden = false;
+
+        picker.disabled = true;
+        channel.disabled = true;
+
+        canvas.className = "loading";
+    }
+    function stopLoading() {
+        loading.hidden = true;
+
+        picker.disabled = false;
+        channel.disabled = false;
+
+        canvas.className = "";
     }
 
     function blobToImage(blob) {
@@ -141,6 +141,8 @@ title: "Oklab"
         <option value="yellow">Yellowscale</option>
     </select>
 </p>
+
+<p id="loading" hidden>Processing the image...</p>
 
 <canvas id="canvas">There should be a canvas here.</canvas>
 

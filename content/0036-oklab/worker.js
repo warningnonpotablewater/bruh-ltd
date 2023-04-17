@@ -1,10 +1,90 @@
-export function srgbToOklab(pixel) {
-    return linear_srgb_to_oklab(srgb_to_linear_srgb(pixel));
+addEventListener("message", (event) => {
+    const message = event.data;
+
+    const data = new Uint8ClampedArray(message.buffer);
+    const transform = transforms[message.channel] ?? transforms.L;
+
+    process(data, transform);
+
+    postMessage(data.buffer);
+});
+
+function process(data, transform) {
+    const PIXEL_SIZE = 4;
+    const RGB_SIZE = 3;
+
+    for (let i = 0; i < data.length; i += PIXEL_SIZE) {
+        const rgb = data.slice(i, i + RGB_SIZE);
+
+        const processed = desaturate(rgb, transform);
+
+        data.set(processed, i);
+    }
+}
+
+function desaturate(pixel, transform) {
+    const oklab = srgbToOklab(pixel);
+
+    const desaturated = transform(oklab);
+
+    const rgb = oklabToSrgb(desaturated);
+
+    return rgb;
+}
+
+const transforms = {
+    L(color) {
+        return new Float32Array([color[0], 0, 0]);
+    },
+
+    a(color) {
+        return new Float32Array([color[0], color[1], 0]);
+    },
+
+    b(color) {
+        return new Float32Array([color[0], 0, color[2]]);
+    },
+
+    red(color) {
+        return new Float32Array([
+            color[0],
+            color[1] > 0 ? color[1] : 0,
+            color[1] > 0 ? color[1] / 1.7868071106680694 : 0
+        ]);
+    },
+
+    green(color) {
+        return new Float32Array([
+            color[0],
+            color[1] < 0 ? color[1] : 0,
+            color[1] < 0 ? color[1] / -1.3030058768323223 : 0
+        ]);
+    },
+
+    blue(color) {
+        return new Float32Array([
+            color[0],
+            color[2] < 0 ? color[2] / 9.598185279893794 : 0,
+            color[2] < 0 ? color[2] : 0
+        ]);
+    },
+
+    yellow(color) {
+        return new Float32Array([
+            color[0],
+            color[2] > 0 ? color[2] / -2.7822938677007385 : 0,
+            color[2] > 0 ? color[2] : 0
+        ]);
+    }
 };
 
-export function oklabToSrgb(pixel) {
+function srgbToOklab(pixel) {
+    return linear_srgb_to_oklab(srgb_to_linear_srgb(pixel));
+}
+
+function oklabToSrgb(pixel) {
     return linear_srgb_to_srgb(oklab_to_linear_srgb(pixel));
-};
+}
 
 function srgb_to_linear_srgb(pixel) {
     return new Float32Array([
