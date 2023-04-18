@@ -38,6 +38,7 @@ title: "Oklab"
     const worker = new Worker("worker.js");
 
     let image;
+    let cache = {};
 
     picker.addEventListener("change", pickFile);
     channel.addEventListener("change", setChannel);
@@ -53,6 +54,7 @@ title: "Oklab"
         const element = await blobToImage(file);
 
         image = element;
+        cache = {};
 
         nextPage.hidden = Math.random() < 0.9;
 
@@ -62,6 +64,14 @@ title: "Oklab"
     function setChannel() {
         if (!image) {
             return;
+        }
+
+        const cached = cache[channel.value];
+
+        if (cached) {
+            draw({data: cached});
+
+            return
         }
 
         startLoading();
@@ -87,6 +97,8 @@ title: "Oklab"
     async function draw(event) {
         const data = new Uint8ClampedArray(event.data);
         const imageData = new ImageData(data, image.width, image.height);
+
+        cache[channel.value] = event.data;
 
         context.putImageData(imageData, 0, 0);
 
@@ -172,7 +184,7 @@ title: "Oklab"
 </p>
 
 <p id="loading" hidden>Processing the image...</p>
-<p><a id="download" hidden>Download</a></p>
+<p><a id="download" download hidden>Download</a></p>
 
 <canvas id="canvas">There should be a canvas here.</canvas>
 
