@@ -16,6 +16,10 @@ title: "Oklab"
     canvas.loading {
         opacity: 0.5;
     }
+
+    #next-page {
+        margin-top: 20em;
+    }
 </style>
 
 <script type="module">
@@ -28,6 +32,7 @@ title: "Oklab"
     const context = canvas.getContext("2d");
 
     const loading = element("loading");
+    const download = element("download");
     const nextPage = element("next-page");
 
     const worker = new Worker("worker.js");
@@ -49,9 +54,7 @@ title: "Oklab"
 
         image = element;
 
-        if (Math.random() < 0.1) {
-            nextPage.hidden = false;
-        }
+        nextPage.hidden = Math.random() < 0.9;
 
         setChannel();
     }
@@ -81,17 +84,30 @@ title: "Oklab"
         });
     }
 
-    function draw(event) {
+    async function draw(event) {
         const data = new Uint8ClampedArray(event.data);
         const imageData = new ImageData(data, image.width, image.height);
 
         context.putImageData(imageData, 0, 0);
 
+        await showDownloadLink();
         stopLoading();
     }
 
+    async function showDownloadLink() {
+        const blob = await canvasToBlob(canvas);
+        const url = URL.createObjectURL(blob);
+
+        download.href = url;
+    }
+
     function startLoading() {
+        if (download.href) {
+            URL.revokeObjectURL(download.href);
+        }
+
         loading.hidden = false;
+        download.hidden = true;
 
         picker.disabled = true;
         channel.disabled = true;
@@ -100,6 +116,7 @@ title: "Oklab"
     }
     function stopLoading() {
         loading.hidden = true;
+        download.hidden = false;
 
         picker.disabled = false;
         channel.disabled = false;
@@ -126,6 +143,18 @@ title: "Oklab"
             image.src = url;
         });
     }
+
+    function canvasToBlob(canvas) {
+        return new Promise((resolve, reject) => {
+            canvas.toBlob((blob) => {
+                if (!blob) {
+                    reject();
+                }
+
+                resolve(blob);
+            });
+        });
+    }
 </script>
 
 <p><input id="picker" type="file" accept="image/*" autocomplete="off"></p>
@@ -146,4 +175,6 @@ title: "Oklab"
 
 <canvas id="canvas">There should be a canvas here.</canvas>
 
-<p><a href="/9999-nine-nine-nine-nine/" id="next-page" hidden>Next page</a></p>
+<p><a id="download" hidden>Download</a></p>
+
+<p id="next-page" hidden><a href="/9999-nine-nine-nine-nine/">Next page</a></p>
