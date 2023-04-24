@@ -75,6 +75,14 @@ const transforms = {
             color[2] > 0 ? color[2] / -2.7822938677007385 : 0,
             color[2] > 0 ? color[2] : 0
         ]);
+    },
+
+    invert(color) {
+        return new Float32Array([
+            1 - color[0],
+            color[1] * -1,
+            color[2] * -1
+        ]);
     }
 };
 
