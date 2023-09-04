@@ -1,0 +1,105 @@
+---
+title: "Spinning rat"
+---
+
+<style>
+    @keyframes roll {
+        0% {
+            transform: rotateZ(0deg);
+        }
+        100% {
+            transform: rotateZ(360deg);
+        }
+    }
+    @keyframes pitch {
+        0% {
+            transform: rotateX(0deg);
+        }
+        100% {
+            transform: rotateX(360deg);
+        }
+    }
+    @keyframes yaw {
+        0% {
+            transform: rotateY(0deg);
+        }
+        100% {
+            transform: rotateY(360deg);
+        }
+    }
+
+    body {
+        padding: 1em;
+        margin: 0 auto;
+        line-height: 1.5;
+        font-family: serif;
+        font-size: 14pt;
+    }
+
+    h1 {
+        margin-top: 0;
+    }
+
+    .rats {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    figure {
+        margin: 1em;
+        font-size: 1.5em;
+    }
+    figcaption {
+        padding-top: 2em;
+        text-align: center;
+    }
+
+    .rat {
+        width: 256px;
+        height: 256px;
+        line-height: 1;
+        font-size: 256px;
+        transform-style: preserve-3d;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-duration: 2s;
+    }
+
+    .roll {
+        animation-name: roll;
+    }
+    .pitch {
+        animation-name: pitch;
+    }
+    .yaw {
+        animation-name: yaw;
+    }
+</style>
+
+<h1>Spinning rat</h1>
+
+<p>Assumptions:</p>
+
+<ul>
+    <li>The rat is right in front of you.</li>
+    <li>The rat is facing you with its body, not nose.</li>
+</ul>
+
+<div class="rats">
+    <figure>
+        <div class="rat roll">🐀</div>
+        <figcaption>Roll</figcaption>
+    </figure>
+
+    <figure>
+        <div class="rat pitch">🐀</div>
+        <figcaption>Pitch</figcaption>
+    </figure>
+
+    <figure>
+        <div class="rat yaw">🐀</div>
+        <figcaption>
+            Ya{{% secret-link "/9999-nine-nine-nine-nine/" %}}w{{% /secret-link %}}
+        </figcaption>
+    </figure>
+</div>
