@@ -8,26 +8,39 @@ title: "Licensing information"
 
 * `0001-about/1.jpg` -
   [source](https://www.publicdomainpictures.net/en/view-image.php?image=298717&picture=public-toilets)
+  > Copyright Jean Beaufort
 * `0001-about/2.jpg` -
   [source](https://www.publicdomainpictures.net/en/view-image.php?image=105325&picture=portable-toilet)
+  > Copyright Paul Brennan
 * `0001-about/3.jpg` -
   [source](https://www.publicdomainpictures.net/en/view-image.php?image=363718&picture=portable-toilet)
+  > Copyright Sound Media
 * `0001-about/4.jpg` -
   [source](https://www.publicdomainpictures.net/en/view-image.php?image=49339&picture=old-toilet)
+  > Copyright X posid
 * `0001-about/5.jpg` -
   [source](https://www.publicdomainpictures.net/en/view-image.php?image=250060&picture=old-outhouse)
+  > Copyright Linnaea Mallette
 * `0001-about/6.jpg` -
   [source](https://www.publicdomainpictures.net/en/view-image.php?image=24942&picture=toilet)
+  > Copyright Junior Libby
 * `0002-baako/candle.gif` -
   [source](https://commons.wikimedia.org/wiki/File:Jeeny_candle.gif)
+  > Copyright 2007 Jeeny
 * `0003-mfsb/wallpaper.jpg` -
   [source](https://publicdomainpictures.net/en/view-image.php?image=45009&picture=damask-background-brown-orange)
+  > Copyright Karen Arnold
 * `0003-mfsb/painting.jpg` -
   [source](https://commons.wikimedia.org/wiki/File:Stranover,_Tobias_-_Still-Life_with_Flowers_-_Google_Art_Project.jpg),
   [source](https://publicdomainpictures.net/en/view-image.php?image=270264&picture=framed-vintage-painting)
+  > Copyright 1700 Tobias Stranover
+  >
+  > Copyright Circe Denyer
 * `0012-framebuffer/test.png` -
   [source](https://commons.wikimedia.org/wiki/File:Chinese_HDTV_test_card.png)
+  > Copyright 2011 State Administration of Radio, Film and Television
 * Everything in `images/cursors/`
+  > Copyright 2020 Bruh, Ltd
 
 ## [Creative Commons Attribution 3.0 Unported Public License][cc-by-3]
 
