@@ -2,6 +2,8 @@
 title: "Licensing information"
 ---
 
+# Bruh, Ltd licensing information
+
 ## [CC0 1.0 Universal][cc0]
 
 [cc0]: LICENSE_CC0.txt
