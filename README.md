@@ -14,4 +14,4 @@ hugo server
 
 ## License
 
-[Here](content/licensing/_index.md).
+[Creative Commons Attribution 4.0](content/licensing/_index.md).
