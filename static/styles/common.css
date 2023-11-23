@@ -16,10 +16,11 @@
     position: fixed;
     bottom: 0px;
     right: 0px;
-    font-size: 12pt;
+    padding: 0.25em 0.5em;
+    font-size: 10pt;
     font-family: sans-serif;
     color: #ffffff;
-    background: #0000007f;
+    background: #ffffff;
     z-index: 9999;
 }
 .licensing.left {
@@ -29,5 +30,10 @@
 
 .licensing a {
     text-decoration: underline;
-    color: #00ffe1;
+    color: #0000ee !important;
+}
+
+.licensing a:hover {
+    text-decoration: none;
+    opacity: 1;
 }
