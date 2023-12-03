@@ -35,14 +35,14 @@ title: "Licensing information"
 * `0003-mfsb/painting.jpg` -
   [source](https://commons.wikimedia.org/wiki/File:Stranover,_Tobias_-_Still-Life_with_Flowers_-_Google_Art_Project.jpg),
   [source](https://publicdomainpictures.net/en/view-image.php?image=270264&picture=framed-vintage-painting)
-  > Copyright 1700 Tobias Stranover
+  > Made by Tobias Stranover in 1700
   >
   > Copyright Circe Denyer
 * `0012-framebuffer/test.png` -
   [source](https://commons.wikimedia.org/wiki/File:Chinese_HDTV_test_card.png)
-  > Copyright 2011 State Administration of Radio, Film and Television
+  > Made by State Administration of Radio, Film and Television in 2011
 * Everything in `images/cursors/`
-  > Copyright 2020 Bruh, Ltd
+  > Made by Bruh, Ltd in 2020
 
 ## [Creative Commons Attribution 3.0 Unported Public License][cc-by-3]
 
