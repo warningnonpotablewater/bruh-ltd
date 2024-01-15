@@ -4,9 +4,7 @@ title: "Licensing information"
 
 # Bruh, Ltd licensing information
 
-## [CC0 1.0 Universal][cc0]
-
-[cc0]: LICENSE_CC0.txt
+## [CC0 1.0 Universal](cc0/)
 
 * `0001-about/1.jpg` -
   [source](https://www.publicdomainpictures.net/en/view-image.php?image=298717&picture=public-toilets)
@@ -44,16 +42,20 @@ title: "Licensing information"
 * Everything in `images/cursors/`
   > Made by Bruh, Ltd in 2020
 
-## [Creative Commons Attribution 3.0 Unported Public License][cc-by-3]
-
-[cc-by-3]: LICENSE_CC_BY_3.txt
+## [Creative Commons Attribution 3.0 Unported](cc-by-3.0/)
 
 * `0029-word-chain/words.txt` -
   [source](https://www.eff.org/files/2016/07/18/eff_large_wordlist.txt)
   > (EFF's long word list (for use with five dice)) Copyright 2016
   > Electronic Frontier Foundation
 
-## [Creative Commons Attribution-ShareAlike 2.0 Generic Public License][cc-by-sa-2]
+## [Creative Commons Attribution 4.0 International](cc-by-4.0/)
+
+* `0004-www/stars.png` -
+  [source](https://commons.wikimedia.org/wiki/File:Phoenix_dwarf_galaxy.jpg)
+  > Copyright 2011 ESA/Hubble
+
+## [Creative Commons Attribution-ShareAlike 2.0](cc-by-sa-2.0/)
 
 [cc-by-sa-2]: LICENSE_CC_BY_SA_2.html
 
@@ -62,9 +64,7 @@ title: "Licensing information"
   > (2020-02-22\_12-02-35\_ILCE-6500\_DSC09086\_DxO) Copyright 2020
   > Miguel Discart
 
-## [SIL Open Font License][ofl]
-
-[ofl]: LICENSE_OFL.txt
+## [SIL Open Font License, Version 1.1](ofl-1.1/)
 
 * `fonts/comic-neue.woff2` -
   [source](https://github.com/crozynski/comicneue/blob/380f5e82c13d85c56fd0a78df58d06343cc1393b/Fonts/WebFonts/woff2/ComicNeue/ComicNeue-Regular.woff2)
@@ -82,9 +82,7 @@ title: "Licensing information"
   > Font Name 'Source'. All Rights Reserved. Source is a trademark of
   > Adobe in the United States and/or other countries.
 
-## [Creative Commons Attribution 4.0 International Public License][cc-by-4]
-
-[cc-by-4]: LICENSE.txt
+## [Creative Commons Attribution-ShareAlike 4.0 International](cc-by-sa-4.0/)
 
 * `0002-baako/village.jpg` -
   [source](https://commons.wikimedia.org/wiki/File:Village_of_Rhodes,_South_Africa.jpg),
@@ -95,8 +93,5 @@ title: "Licensing information"
   > * (Pigs in Blankets) Copyright 2005 stef yau
   >
   > This modified image: Copyright 2020 Bruh, Ltd
-* `0004-www/stars.png` -
-  [source](https://commons.wikimedia.org/wiki/File:Phoenix_dwarf_galaxy.jpg)
-  > Copyright 2011 ESA/Hubble
-* All other files except embedded ones
+* Everything else
   > Copyright 2020 Bruh, Ltd
