@@ -50,11 +50,11 @@
 }
 
 #consent a {
-    text-decoration: none;
+    text-decoration: underline;
     color: var(--consent-accent-color);
 }
 #consent a:hover {
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 #consent small {
